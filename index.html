@@ -1,22 +1,80 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <title>Pong</title>
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;  
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="canv"></canvas>
+        <script>
+            let canvas = document.querySelector("#canv");
 
-<head>  
-    <title>NAG</title>
-    <style>
-       
-    </style>
-</head>
+            
+            let ctx = canvas.getContext("2d");
 
-<body>
-    <canvas id="canv"></canvas>
-    <script>
-        let pufferFish = "Dangerous"
-        console.log(pufferFish)
-        
-        let canvas = document.querySelector("#canv")
-        let ctx = canvas.getContext("2d")
-        ctx.fillRect(50, 50, 100, 150)
-    </script>
-</body>
+            let margin = 20;
+            let size = 100;
+            let pongX = margin+size/2; 
+            let pongY = margin+size/2; 
+            let pongVX = 3; 
+            let pongVY = 2; 
 
+
+            function update() {
+                //Model
+                pongX += pongVX;
+                pongY += pongVY;
+                if(pongX > margin + size) {
+                    pongVX *=-1;
+                }
+                if(pongY > margin + size) {
+                    pongVY *=-1;
+                }
+                
+                if(pongX < margin) {
+                    pongVX *=-1;
+                }
+                if(pongY < margin) {
+                    pongVY *=-1;
+                }
+            }
+
+            function draw() {
+                //View
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight; 
+                ctx.fillStyle="green";
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+                ctx.fillStyle="black";
+                ctx.beginPath();
+                ctx.lineTo(margin, margin);
+                ctx.lineTo(margin + size, margin);  
+                ctx.lineTo(margin + size, margin + size); 
+                ctx.lineTo(margin, margin+size);
+                ctx.lineTo(margin, margin); 
+
+                ctx.stroke(); 
+                
+                ctx.fillStyle="blue";
+
+                ctx.beginPath();
+                ctx.arc(pongX,pongY, 5, 0, Math.PI * 2); 
+                ctx.fill(); 
+                //ctx.fill(); 
+                
+            }
+
+            function gameLoop(){
+               update(); 
+               draw();
+            }
+
+            setInterval(gameLoop, 1000/25); 
+        </script>
+    </body>
 </html>
