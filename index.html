@@ -18,7 +18,7 @@
         let ctx = canvas.getContext("2d");
 
         let sceneIndex = 0 
-        let difficulty = 2/9
+        let difficulty = 1
 
         let margin = canvas.height/3;
         let xmargin = margin + (canvas.width - margin * 3)/2
@@ -65,18 +65,17 @@
 
                     if(e.key == 1) {
                         difficulty = 1/3
-                        difficultyString = "EASY TRIPLE PONG"
+                        difficultyString = "EASY PONG"
                     }
                     if(e.key == 2) {
                         difficulty = 2/9
-                        difficultyString = "MEDIUM TRIPLE PONG"
+                        difficultyString = "MEDIUM PONG"
                     }
                     if(e.key == 3) {
-                        difficulty = 1/10
-                        difficultyString = "HARD TRIPLE PONG"
+                        difficulty = 1/9
+                        difficultyString = "HARD PONG"
                     }
                         
-         
                         resetVars(); 
                         sceneIndex =1
                 }
@@ -124,8 +123,8 @@
 
             keysDown["ArrowLeft"] = false; 
             keysDown["ArrowRight"] = false; 
-            keysDown["A"] = false; 
-            keysDown["D"] = false; 
+            keysDown["a"] = false; 
+            keysDown["d"] = false; 
         }
 
         function update() {
@@ -232,8 +231,7 @@
                     ctx.textAlign = 'center';
                     ctx.font = "100px serif";
                     ctx.fillText("PONG", canvas.width/2, canvas.height/2)
-                    ctx.font = "30px serif";
-                    ctx.fillText("To begin press: (1 - Easy, 2 - Medium, 3 - Hard)", canvas.width/2, canvas.height - canvas.height*3/7)
+                    drawDifficultyText("begin"); 
                     break;
                 case 1:
                     canvas.width = window.innerWidth
@@ -241,8 +239,6 @@
                     //View part of MVC
                     ctx.fillStyle = "lightgreen"
                     ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-                    
 
                     ctx.strokeStyle = "black"
                     ctx.beginPath()
@@ -296,14 +292,14 @@
                     ctx.fillStyle = "white"
                     ctx.textAlign = 'center';
                     ctx.font = "60px serif";
-                    ctx.fillText("YOU HAVE DIED... SCORE: "+score, canvas.width/2, canvas.height/2)
-                   
-                    ctx.font = "30px serif";
-                    ctx.fillText("To continue press: (1 - Easy, 2 - Medium, 3 - Hard)", canvas.width/2, canvas.height - canvas.height*3/7)
+                    ctx.fillText("GAME OVER... SCORE: "+score, canvas.width/2, canvas.height/2)
+                    drawDifficultyText("retry"); 
                    
                     break; 
             }
         }
+
+
 
         function gameLoop() {
             
@@ -319,12 +315,20 @@
         }
 
         function pause() {
-            ctx.fillStyle = "white"
+            ctx.fillStyle = "black"
             ctx.textAlign = 'center';
-            ctx.font = "100px serif";
+            ctx.font = "70px serif";
             ctx.fillText("PAUSED", canvas.width/2, canvas.height/2)
             ctx.font = "30px serif";
-            ctx.fillText("Press 'P' to continue.", canvas.width/2, canvas.height - canvas.height*3/7)
+            ctx.fillText("Press p to continue.", canvas.width/2, canvas.height - canvas.height*3/7)
+        }
+
+        function drawDifficultyText(str) {
+            ctx.font = "30px serif";
+            ctx.fillText("To "+str+" please choose a difficulty. Press:", canvas.width/2, canvas.height - canvas.height*6/14)
+            ctx.fillText("1 - Easy      ", canvas.width/2, canvas.height - canvas.height*5/14)
+            ctx.fillText("2 - Medium", canvas.width/2, canvas.height - canvas.height*4/14)
+            ctx.fillText("3 - Hard     ", canvas.width/2, canvas.height - canvas.height*3/14)
         }
 
         setInterval(gameLoop, 1000 / 45)
