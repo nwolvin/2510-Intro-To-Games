@@ -33,12 +33,10 @@ function keyUp(e) {
     if (e.key == "p") {
         pause = !pause
     }
-
 }
 
 function keyDown(e) {
     keysDown[e.key] = true
-    console.log(e.key);
     //To prevent scrolling (if needed)
     //This has to be in keyDown, not keyup
     if (e.key == " ") {
