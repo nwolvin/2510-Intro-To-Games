@@ -2,8 +2,8 @@ let time = 0
 let up = true
 
 let planeX = window.innerWidth/2;
-let planeY = window.innerWidth/2;//window.innerHeight - window.innerHeight/6;
-let size = 5/2
+let planeY = window.innerHeight - window.innerHeight/6;
+let size = 1
 let projectiles = []; 
 let targets = []; 
 let propeller = false;
@@ -52,7 +52,7 @@ function addTarget() {
 
 
 function mouseMove(e) {
-   /* planeX = e.clientX; 
+   /*s planeX = e.clientX; 
     planeY = e.clientY;*/
 }
 
@@ -77,7 +77,11 @@ function drawProjectiles(){
     while (i < projectiles.length) {
         ctx.fillStyle = "white"
         ctx.beginPath()
-        ctx.arc(projectiles[i].itemX, projectiles[i].itemY -130*size, 5, 0, Math.PI * 2)
+
+        ctx.ellipse(projectiles[i].itemX, projectiles[i].itemY -130*size, 2*size, 10*size, 0, 0, Math.PI, true);
+        ctx.ellipse(projectiles[i].itemX, projectiles[i].itemY -130*size, 2*size, 10*size, 0, 0, Math.PI, false);
+
+       // ctx.arc(projectiles[i].itemX, projectiles[i].itemY -130*size, 5, 0, Math.PI * 2)
         ctx.fill()
         projectiles[i].itemY = projectiles[i].itemY - 30
         i++
@@ -99,8 +103,6 @@ function drawTargets(){
 function drawPlane(x,y) {
     ctx.beginPath();
     ctx.fillStyle = "slategrey"
-    ctx.moveTo(x, y);
-    ctx.moveTo(x, y-100*size);
     ctx.moveTo(x-10*size, y-100*size);
     ctx.lineTo(x-10*size, y-70*size)
     ctx.lineTo(x-35*size, y-60*size)
@@ -113,9 +115,9 @@ function drawPlane(x,y) {
     ctx.lineTo(x-50*size, y+60*size)
     ctx.lineTo(x-48*size, y+75*size)
     ctx.lineTo(x-8*size, y+85*size)
-    ctx.lineTo(x-2*size, y+85*size)
+    ctx.lineTo(x-1*size, y+85*size)
     ctx.lineTo(x, y+100*size)
-    ctx.lineTo(x+2*size, y+85*size)
+    ctx.lineTo(x+1*size, y+85*size)
     ctx.lineTo(x+8*size, y+85*size)
     ctx.lineTo(x+48*size, y+75*size)
     ctx.lineTo(x+50*size, y+60*size)
@@ -126,17 +128,17 @@ function drawPlane(x,y) {
     ctx.lineTo(x+35*size, y-60*size)
     ctx.lineTo(x+10*size, y-70*size)
     ctx.lineTo(x+10*size, y-100*size)
-    ctx.ellipse(x, y-100*size, 10*size, 20*size, 0, 0, Math.PI, true);
+    ctx.lineTo(x-10*size, y-100*size)
     ctx.stroke();
     ctx.fill()
 
     if(propeller) {
-        ctx.moveTo(x+10*size, y-105*size)
-        ctx.lineTo(x+30*size, y-105*size)
+        ctx.moveTo(x+9*size, y-105*size)
+        ctx.lineTo(x+29*size, y-105*size)
         propeller = false;
     } else {
-        ctx.moveTo(x-10*size, y-105*size)
-        ctx.lineTo(x-30*size, y-105*size)
+        ctx.moveTo(x-9*size, y-105*size)
+        ctx.lineTo(x-29*size, y-105*size)
         propeller = true; 
     }
     ctx.stroke();
@@ -153,7 +155,7 @@ function drawPlane(x,y) {
     ctx.lineTo(x-35*size, y-60*size)
     ctx.stroke();
     ctx.fill()
-
+    //Stripe
     ctx.beginPath();
     ctx.fillStyle = "black"
     ctx.moveTo(x+35*size, y-60*size)
@@ -163,55 +165,93 @@ function drawPlane(x,y) {
     ctx.lineTo(x+35*size, y-60*size)
     ctx.stroke();
     ctx.fill()
-
     ctx.beginPath();
-    ctx.fillStyle = "black"
     ctx.moveTo(x-35*size, y+56*size)
     ctx.lineTo(x-35*size, y+78*size)
-    
     ctx.lineTo(x-20*size, y+82*size)
     ctx.lineTo(x-20*size, y+53*size)
     ctx.lineTo(x-35*size, y+56*size)
     ctx.stroke();
     ctx.fill()
-
     ctx.beginPath();
-    ctx.fillStyle = "black"
     ctx.moveTo(x+35*size, y+56*size)
     ctx.lineTo(x+35*size, y+78*size)
-    
     ctx.lineTo(x+20*size, y+82*size)
     ctx.lineTo(x+20*size, y+53*size)
     ctx.lineTo(x+35*size, y+56*size)
     ctx.stroke();
+    ctx.fillStyle="black"
     ctx.fill()
 
-    
+    //American Star Insignia
+    ctx.beginPath()
     ctx.fillStyle="white"
-    ctx.moveTo(x-120*size, y-46*size);
-    ctx.lineTo(x-80*size, y-46*size)
-    ctx.lineTo(x-80*size, y-38*size)
-    ctx.lineTo(x-120*size, y-38*size)
+    ctx.moveTo(x-115*size, y-48*size);
+    ctx.lineTo(x-75*size, y-48*size)
+    ctx.lineTo(x-75*size, y-40*size)
+    ctx.lineTo(x-115*size, y-40*size)
+    ctx.lineTo(x-115*size, y-48*size)
+    ctx.fill()
     ctx.stroke()
-
     ctx.fillStyle="black"
     ctx.beginPath()
-    ctx.arc(x-100*size, y-42*size, 10*size, 0, Math.PI * 2)
+    ctx.arc(x-95*size, y-44*size, 10*size, 0, Math.PI * 2)
+    ctx.stroke()
+    ctx.fill()
+    ctx.fillStyle="white"
+    drawStar(x-95*size, y-44*size, 9*size)  
+
+    //Cockpit
+    ctx.beginPath()
+    ctx.fillStyle="black"
+    ctx.ellipse(x, y-100*size, 9*size, 20*size, 0, 0, Math.PI, true);
+    ctx.stroke()
+    ctx.fill()
+    ctx.closePath()
+    ctx.beginPath()
+    ctx.fillStyle="black"
+    ctx.ellipse(x, y-50*size, 9*size, 60*size, 0, 0, Math.PI, true);
+    ctx.ellipse(x, y-50*size, 9*size, 50*size, 0, 0, Math.PI, false);
     ctx.stroke()
     ctx.fill()
     
-    
+    ctx.beginPath()
+    ctx.fillStyle="LightBlue"
+    ctx.ellipse(x, y-42*size, 10*size, 12*size, 0, 0, Math.PI, true);
+    ctx.ellipse(x, y-42*size, 10*size, 50*size, 0, 0, Math.PI, false);
+    ctx.stroke()
+    ctx.fill()
+    ctx.closePath()
+    ctx.beginPath()
+    ctx.fillStyle="black"
+    ctx.moveTo(x, y+8*size)
+    ctx.lineTo(x, y+15*size)
+    ctx.stroke()
+    ctx.fill()
 
+    ctx.closePath()
+    ctx.beginPath()
+    ctx.fillStyle="black"
+    ctx.moveTo(x-1*size, y+85*size)
+    ctx.lineTo(x, y+100*size)
+    ctx.lineTo(x+1*size, y+85*size)
+    ctx.lineTo(x-1*size, y+85*size)
+    ctx.stroke()
+    ctx.fill()
 
-
-    
-    
-    //ctx.lineTo(x, y-100*size)
-    
+    ctx.beginPath()
+    ctx.fillStyle="slategrey"
+    ctx.ellipse(x, y+65*size, 2*size, 25*size, 0, 0, Math.PI, true);
+    ctx.ellipse(x, y+65*size, 2*size, 25*size, 0, 0, Math.PI, false);
+    ctx.stroke()
+    ctx.fill()
    
-    
 
+
+    
 }
+
+
 
 function draw() {
     //draw ocean
