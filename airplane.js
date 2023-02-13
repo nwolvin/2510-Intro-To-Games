@@ -5,6 +5,7 @@ let planeX = window.innerWidth/2;
 let planeY = window.innerHeight - window.innerHeight/6;
 let size = 1
 let projectiles = []; 
+let propeller = false;
 
 
 document.addEventListener("keyup", shoot)
@@ -65,7 +66,7 @@ function drawProjectiles(){
     while (i < projectiles.length) {
         ctx.fillStyle = "white"
         ctx.beginPath()
-        ctx.arc(projectiles[i].projX, projectiles[i].projY -125*size, 5, 0, Math.PI * 2)
+        ctx.arc(projectiles[i].projX, projectiles[i].projY -130*size, 5, 0, Math.PI * 2)
         ctx.fill()
         projectiles[i].projY = projectiles[i].projY - 30
         i++
@@ -109,10 +110,17 @@ function drawPlane(x,y) {
     ctx.lineTo(x+10*size, y-100*size)
     ctx.ellipse(x, y-100*size, 10*size, 20*size, 0, 0, Math.PI, true);
     ctx.fill()
-    ctx.moveTo(x+10*size, y-100*size)
-    ctx.lineTo(x+30*size, y-100*size)
-    ctx.moveTo(x-10*size, y-100*size)
-    ctx.lineTo(x-30*size, y-100*size)
+    if(propeller) {
+        ctx.moveTo(x+10*size, y-100*size)
+        ctx.lineTo(x+30*size, y-100*size)
+        propeller = false;
+    } else {
+        ctx.moveTo(x-10*size, y-100*size)
+        ctx.lineTo(x-30*size, y-100*size)
+        propeller = true; 
+    }
+    
+    
     //ctx.lineTo(x, y-100*size)
     ctx.stroke();
     ctx.fill()
