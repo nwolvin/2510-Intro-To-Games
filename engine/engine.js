@@ -1,3 +1,23 @@
+class SceneManager {
+    static scenes = []
+    static currentSceneIndex = 0
+    static changedSceneFlag = true
+    static addScene(scene) {
+        SceneManager.scenes.push(scene)
+    }
+    static getActiveScene() {
+        return SceneManager.scenes[SceneManager.currentSceneIndex];
+    }
+    static changeScene(index) {
+        SceneManager.currentSceneIndex = index
+        SceneManager.changedSceneFlag = true
+    }
+}
+
+class Scene {
+
+}
+
 let canvas = document.querySelector("#canv")
 let ctx = canvas.getContext("2d");
 
@@ -46,13 +66,17 @@ function keyDown(e) {
 
 function engineUpdate() {
     if (pause) return
-    update()
+    if (SceneManager.changedSceneFlag && SceneManager.getActiveScene().start) {
+        SceneManager.getActiveScene().start()
+        SceneManager.changedSceneFlag = false
+    }
+    SceneManager.getActiveScene().update()
 }
 
 function engineDraw() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
-    draw()
+    SceneManager.getActiveScene().draw(ctx)
 }
 
 function drawStar(starX, starY, radius) {

@@ -1,43 +1,51 @@
-let time = 0
-let up = true
-
+let targets = []; 
+let projectiles = []; 
 let planeX = window.innerWidth/2;
 let planeY = window.innerHeight - window.innerHeight/6;
-let size = 1
-let projectiles = []; 
-let targets = []; 
-let propeller = false;
+let size = 2;
 
+class MainScene extends Scene {
+    start() {
+        this.propeller = false;
+    }
+    update() {
+        //Pull the keyboard state and move paddle
+        if(keysDown["ArrowRight"] || keysDown["d"]){
+            planeX +=12
+        }
+        if(keysDown["ArrowLeft"] || keysDown["a"]){
+            planeX -=12
+        }
+        if(keysDown["ArrowUp"] || keysDown["w"]){
+            planeY -=12
+        }
+        if(keysDown["ArrowDown"] || keysDown["s"]){
+            planeY +=12
+        }
+
+
+        removeObject(projectiles)
+        removeObject(targets)
+    }
+    draw() {
+        //draw ocean
+        ctx.fillStyle = "steelblue";
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        drawtargets(size)
+        drawprojectiles(size)
+        drawPlane(planeX, planeY,size)
+
+    }
+}
 
 document.addEventListener("keyup", shoot)
 document.addEventListener("mousemove", mouseMove);
 document.addEventListener("mouseup", shoot);
 
-function update() {
-    //Pull the keyboard state and move paddle
-    if(keysDown["ArrowRight"] || keysDown["d"]){
-        planeX +=12
-    }
-    if(keysDown["ArrowLeft"] || keysDown["a"]){
-        planeX -=12
-    }
-    if(keysDown["ArrowUp"] || keysDown["w"]){
-        planeY -=12
-    }
-    if(keysDown["ArrowDown"] || keysDown["s"]){
-        planeY +=12
-    }
-    if(keyUp["x"]) {
-    }
-    removeObject(projectiles)
-    removeObject(targets)
-    
-}
-
 function shoot(e) {
     if (e.key == "x" || e.type == "mouseup" || e.code == "Space") {
-        addProjectile()
-        drawProjectiles()
+        addProjectile(planeX,planeY)
+        drawprojectiles()
     }
 
     if(e.key =="q") {
@@ -46,17 +54,17 @@ function shoot(e) {
 }
 
 function addTarget() {
-    let target = {itemX:Math.floor(Math.random() * window.innerWidth) + window.innerWidth/2, itemY:0}
+    let target = {itemX:Math.floor(Math.random() * (window.innerWidth*2/3)), itemY:0}
     targets[targets.length] = target; 
 }
 
 
-function mouseMove(e) {
-   /*s planeX = e.clientX; 
-    planeY = e.clientY;*/
-}
+/*function mouseMove(e) {
+    planeX = e.clientX; 
+    planeY = e.clientY;
+}*/
 
-function addProjectile() {
+function addProjectile(planeX,planeY) {
     let projectile = {itemX:planeX, itemY:planeY}; 
     projectiles[projectiles.length] = projectile; 
     
@@ -72,14 +80,14 @@ function removeObject(arr) {
     }
 }
 
-function drawProjectiles(){
+function drawprojectiles(){
     let i = 0; 
     while (i < projectiles.length) {
         ctx.fillStyle = "white"
         ctx.beginPath()
 
-        ctx.ellipse(projectiles[i].itemX, projectiles[i].itemY -130*size, 2*size, 10*size, 0, 0, Math.PI, true);
-        ctx.ellipse(projectiles[i].itemX, projectiles[i].itemY -130*size, 2*size, 10*size, 0, 0, Math.PI, false);
+        ctx.ellipse(projectiles[i].itemX, projectiles[i].itemY -131*size, 2*size, 10*size, 0, 0, Math.PI, true);
+        ctx.ellipse(projectiles[i].itemX, projectiles[i].itemY -131*size, 2*size, 10*size, 0, 0, Math.PI, false);
 
        // ctx.arc(projectiles[i].itemX, projectiles[i].itemY -130*size, 5, 0, Math.PI * 2)
         ctx.fill()
@@ -88,7 +96,7 @@ function drawProjectiles(){
     }
 }
 
-function drawTargets(){
+function drawtargets(){
     let i = 0; 
     while (i < targets.length) {
         ctx.fillStyle = "red"
@@ -132,14 +140,14 @@ function drawPlane(x,y) {
     ctx.stroke();
     ctx.fill()
 
-    if(propeller) {
+    if(this.propeller) {
         ctx.moveTo(x+9*size, y-105*size)
         ctx.lineTo(x+29*size, y-105*size)
-        propeller = false;
+        this.propeller = false;
     } else {
         ctx.moveTo(x-9*size, y-105*size)
         ctx.lineTo(x-29*size, y-105*size)
-        propeller = true; 
+        this.propeller = true; 
     }
     ctx.stroke();
     ctx.fill()
@@ -251,14 +259,7 @@ function drawPlane(x,y) {
     
 }
 
+let mainScene = new MainScene()
 
+SceneManager.addScene(mainScene)
 
-function draw() {
-    //draw ocean
-    ctx.fillStyle = "steelblue";
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-
-    drawPlane(planeX, planeY)
-    drawTargets()
-    drawProjectiles()
-}
