@@ -210,7 +210,12 @@ class ProjectileComponent extends Component {
         this.size = SceneManager.getActiveScene().getObjectByName("plane").getComponent("planeDrawComponent").size;
     }
     update() {
-        this.itemY -= 30;
+        if(this.itemY > canvas.height || this.itemY < 0) {
+            SceneManager.getActiveScene().removeGameObject(SceneManager.getActiveScene().getObjectIndexById(this.parent.id))
+        } else {
+            this.itemY -= 30;
+        }
+        
     }
     draw(ctx){
         
@@ -226,15 +231,14 @@ class ProjectileComponent extends Component {
 
 class ProjectileGameObject extends GameObject {
     start(){
+        this.hasCollision = true; 
+        this.collidableWith = ["target"]; 
         let projectileComponent = new ProjectileComponent(); 
-        projectileComponent.name = "p1";
+        projectileComponent.type = "projectile";
         this.addComponent(projectileComponent);
 
     }
 }
-
-
-
 
 class TargetComponent extends Component {
     start() {
@@ -243,7 +247,11 @@ class TargetComponent extends Component {
         this.itemY = 0; 
     }
     update() {
-        this.itemY +=5;
+        if(this.itemY > canvas.height || this.itemY < 0) {
+            SceneManager.getActiveScene().removeGameObject(SceneManager.getActiveScene().getObjectIndexById(this.parent.id))
+        } else {
+            this.itemY +=5;
+        }
     }
     draw(ctx){
         
@@ -260,7 +268,7 @@ class TargetComponent extends Component {
 class TargetGameObject extends GameObject {
     start(){
         let targetComponent = new TargetComponent(); 
-        targetComponent.name = "t1";
+        targetComponent.type = "target";
         this.addComponent(targetComponent);
 
     }
@@ -271,8 +279,10 @@ class ShootController extends Component {
 
   }
   update(){
-    if(mouseUpFlag == true){
+    if(mouseUpFlag == true || keysUp == ' '){
         SceneManager.getActiveScene().addGameObject(new ProjectileGameObject());
+        //console.log(SceneManager.getActiveScene().gameObjects); 
+        //console.log(SceneManager.getActiveScene().getObjectIndexById(3));
     }
   }
 }
@@ -285,6 +295,7 @@ class AddTargetController extends Component {
       if(keysUp == 'x'){
           SceneManager.getActiveScene().addGameObject(new TargetGameObject());
       }
+
     }
   }
 
@@ -297,6 +308,7 @@ class MainScene extends Scene {
         this.addGameObject(plane)  
         this.addGameObject(new GameObject().addComponent(new ShootController()))
         this.addGameObject(new GameObject().addComponent(new AddTargetController()))
+        
     }
 }
 let mainScene = new MainScene()

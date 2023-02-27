@@ -22,16 +22,32 @@ class Scene {
             gameObject.started = true
             gameObject.start()
         }
+        nextGameObjectId++; 
     }
+    removeGameObject(idx){
+        this.gameObjects.splice(idx, 1); 
+    }
+
     getObjectByName(name){
         return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.name == name)
     }
+    getObjectById(id){
+        return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.id == id)
+    }
+    getObjectIndexById(id){
+        return SceneManager.getActiveScene().gameObjects.findIndex(gameObject=>gameObject.id == id)
+    }
+
 }
 
 class GameObject{
     name = ""
+    type = ""
     components = []
     started = false
+    id = nextGameObjectId;
+    hasCollision = false; 
+    collidableWith = []
     addComponent(component){
         this.components.push(component);
         component.parent = this;
@@ -59,6 +75,7 @@ let keysUp = null
 let mouseX;
 let mouseY
 let mouseUpFlag = false; 
+let nextGameObjectId = 0; 
 
 //Not the strings has to be all lowercase, e.g. keydown not keyDown or KeyDown
 document.addEventListener("keydown", keyDown)
