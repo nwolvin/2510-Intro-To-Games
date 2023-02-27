@@ -15,15 +15,50 @@ class SceneManager {
 }
 
 class Scene {
+    gameObjects = []
+    addGameObject(gameObject){
+        this.gameObjects.push(gameObject);
+        if(gameObject.start && !gameObject.started){
+            gameObject.started = true
+            gameObject.start()
+        }
+    }
+    getObjectByName(name){
+        return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.name == name)
+    }
+}
 
+class GameObject{
+    name = ""
+    components = []
+    started = false
+    addComponent(component){
+        this.components.push(component);
+        component.parent = this;
+        return this;
+    }
+    static getObjectByName(name){
+        return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.name == name)
+    }
+    getComponent(name){
+        return this.components.find(c=>c.name == name)
+    }
+}
+
+class Component{
+    name = ""
+    parent
+    started = false
 }
 
 let canvas = document.querySelector("#canv")
 let ctx = canvas.getContext("2d");
 
 let keysDown = []
+let keysUp = null
 let mouseX;
 let mouseY
+let mouseUpFlag = false; 
 
 //Not the strings has to be all lowercase, e.g. keydown not keyDown or KeyDown
 document.addEventListener("keydown", keyDown)
@@ -42,6 +77,7 @@ function mouseDown(e) {
     //console.log("mouseDown: " + e.clientX + " " + e.clientY)
 }
 function mouseUp(e) {
+    mouseUpFlag = true; 
     //console.log("mouseUp: " + e.clientX + " " + e.clientY)
 }
 function mouseMove(e) {
@@ -50,6 +86,7 @@ function mouseMove(e) {
 
 function keyUp(e) {
     keysDown[e.key] = false
+    keysUp = e.key;
     if (e.key == "p") {
         pause = !pause
     }
@@ -66,17 +103,54 @@ function keyDown(e) {
 
 function engineUpdate() {
     if (pause) return
-    if (SceneManager.changedSceneFlag && SceneManager.getActiveScene().start) {
-        SceneManager.getActiveScene().start()
+    let scene = SceneManager.getActiveScene()
+    if (SceneManager.changedSceneFlag && scene.start) {
+        scene.start()
         SceneManager.changedSceneFlag = false
     }
-    SceneManager.getActiveScene().update()
+    
+    for(let gameObject of scene.gameObjects){
+        if(gameObject.start && !gameObject.started){
+            gameObject.start()
+            gameObject.started = true
+        }
+    }
+
+    for(let gameObject of scene.gameObjects){
+        for(let component of gameObject.components){
+            if(component.start && !component.started){
+                component.start()
+                component.started = true
+            }
+        }
+    }
+
+    //Handle destroy here
+
+    for(let gameObject of scene.gameObjects){
+        for(let component of gameObject.components){
+            if(component.update){
+                component.update()
+            }
+        }
+    }
+    mouseUpFlag = false; 
+    keysUp = null; 
 }
 
 function engineDraw() {
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
-    SceneManager.getActiveScene().draw(ctx)
+    
+    let scene = SceneManager.getActiveScene()
+    
+    for(let gameObject of scene.gameObjects){
+        for(let component of gameObject.components){
+            if(component.draw){
+                component.draw(ctx)
+            }
+        }
+    }
 }
 
 function drawStar(starX, starY, radius) {
@@ -99,7 +173,6 @@ function start(title){
     document.title = title
     function gameLoop() {
         engineUpdate()
-        
         engineDraw()
         
     }
