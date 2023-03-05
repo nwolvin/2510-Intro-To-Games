@@ -28,9 +28,6 @@ class Scene {
         this.gameObjects.splice(idx, 1); 
     }
 
-    getObjectByName(name){
-        return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.name == name)
-    }
     getObjectById(id){
         return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.id == id)
     }
@@ -45,6 +42,11 @@ class GameObject{
     type = ""
     components = []
     started = false
+    constructor(name){
+        this.name = name;
+        this.addComponent(new Transform());
+    }
+
     id = nextGameObjectId;
     hasCollision = false; 
     collidableWith = []
@@ -65,6 +67,18 @@ class Component{
     name = ""
     parent
     started = false
+    get transform(){
+        return this.parent.components[0]
+    }
+}
+
+class Transform extends Component{
+    name = "Transform"
+    x = 0
+    y = 0
+    sx = 1
+    sy = 1
+    r = 0
 }
 
 let canvas = document.querySelector("#canv")
