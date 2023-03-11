@@ -1,8 +1,10 @@
+import "/engine/engine.js"
+
 class DrawBackground extends Component {
-    draw() {
+    draw(ctx) {
         //draw ocean
         ctx.fillStyle = "steelblue";
-        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.fillRect(0, 0, ctx.canvas.width, 2000)
     }
 }
 
@@ -226,7 +228,7 @@ class ProjectileComponent extends Component {
         this.transform.sx = GameObject.getObjectByName("plane").getComponent("planeDrawComponent").transform.sx;
     }
     update() {
-        if(this.transform.y > canvas.height || this.transform.y < 0) {
+        if(this.transform.y > 2000 || this.transform.y < 0) {
             SceneManager.getActiveScene().removeGameObject(SceneManager.getActiveScene().getObjectIndexById(this.parent.id))
         } else {
             this.transform.y -= 30;
@@ -268,7 +270,7 @@ class TargetComponent extends Component {
         this.transform.y = -150
     }
     update() {
-        if(this.transform.y > canvas.height) {
+        if(this.transform.y > 2000) {
             SceneManager.getActiveScene().removeGameObject(SceneManager.getActiveScene().getObjectIndexById(this.parent.id))
         } else {
             this.transform.y +=5;
@@ -310,7 +312,7 @@ class CloudComponent extends Component {
         }
     }
     update() {
-        if(this.transform.y > canvas.height +200) {
+        if(this.transform.y > 2000) {
             SceneManager.getActiveScene().removeGameObject(SceneManager.getActiveScene().getObjectIndexById(this.parent.id))
         } else {
             this.transform.y +=2;
@@ -350,7 +352,7 @@ class ShootController extends Component {
 
   }
   update(){
-    if(mouseUpFlag == true || keysUp == ' '){
+    if(getMouseUpFlag() == true || getKeysUp() == ' '){
         SceneManager.getActiveScene().addGameObject(new ProjectileGameObject());
     }
   }
@@ -361,7 +363,7 @@ class AddTargetController extends Component {
   
     }
     update(){
-      if(keysUp == 'x'){
+      if(getKeysUp() == 'x'){
           SceneManager.getActiveScene().addGameObject(new TargetGameObject());
       }
 
@@ -401,5 +403,5 @@ class MainScene extends Scene {
 }
 let mainScene = new MainScene()
 
-SceneManager.addScene(mainScene)
+export default mainScene;
 

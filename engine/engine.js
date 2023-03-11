@@ -1,85 +1,17 @@
-class SceneManager {
-    static scenes = []
-    static currentSceneIndex = 0
-    static changedSceneFlag = true
-    static addScene(scene) {
-        SceneManager.scenes.push(scene)
-    }
-    static getActiveScene() {
-        return SceneManager.scenes[SceneManager.currentSceneIndex];
-    }
-    static changeScene(index) {
-        SceneManager.currentSceneIndex = index
-        SceneManager.changedSceneFlag = true
-    }
-}
+import "./SceneManager.js"
+import "./Component.js"
+import "./Scene.js"
+import "./GameObject.js"
+import "./Transform.js"
 
-class Scene {
-    gameObjects = []
-    addGameObject(gameObject){
-        this.gameObjects.push(gameObject);
-        if(gameObject.start && !gameObject.started){
-            gameObject.started = true
-            gameObject.start()
-        }
-        nextGameObjectId++; 
-    }
-    removeGameObject(idx){
-        this.gameObjects.splice(idx, 1); 
-    }
 
-    getObjectById(id){
-        return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.id == id)
-    }
-    getObjectIndexById(id){
-        return SceneManager.getActiveScene().gameObjects.findIndex(gameObject=>gameObject.id == id)
-    }
+//Handle favicon
+const link = document.createElement("link");
+link.href = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🎮%3C/text%3E%3C/svg%3E";
+link.rel = "icon";
+document.getElementsByTagName("head")[0].appendChild(link); // for IE6
 
-}
 
-class GameObject{
-    name = ""
-    type = ""
-    components = []
-    started = false
-    constructor(name){
-        this.name = name;
-        this.addComponent(new Transform());
-    }
-
-    id = nextGameObjectId;
-    hasCollision = false; 
-    collidableWith = []
-    addComponent(component){
-        this.components.push(component);
-        component.parent = this;
-        return this;
-    }
-    static getObjectByName(name){
-        return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.name == name)
-    }
-    getComponent(name){
-        return this.components.find(c=>c.name == name)
-    }
-}
-
-class Component{
-    name = ""
-    parent
-    started = false
-    get transform(){
-        return this.parent.components[0]
-    }
-}
-
-class Transform extends Component{
-    name = "Transform"
-    x = 0
-    y = 0
-    sx = 1
-    sy = 1
-    r = 0
-}
 
 let canvas = document.querySelector("#canv")
 let ctx = canvas.getContext("2d");
@@ -104,6 +36,14 @@ let scene = 0;
 
 let pause = false
 
+function getNextGameObjectId(){
+    return nextGameObjectId; 
+}
+
+function addNextGameObjectId(){
+    nextGameObjectId++;
+}
+
 function mouseDown(e) {
     //console.log("mouseDown: " + e.clientX + " " + e.clientY)
 }
@@ -113,6 +53,10 @@ function mouseUp(e) {
 }
 function mouseMove(e) {
     //console.log("mouseMove: " + e.clientX + " " + e.clientY)
+}
+
+function getMouseUpFlag(){
+    return mouseUpFlag;
 }
 
 function keyUp(e) {
@@ -184,6 +128,10 @@ function engineDraw() {
     }
 }
 
+function getKeysUp(){
+    return keysUp;
+}
+
 function drawStar(starX, starY, radius) {
     ctx.beginPath();
     for(var i = 11; i != 0; i--)
@@ -211,3 +159,14 @@ function start(title){
     setInterval(gameLoop, 1000 / 30)
 
 }
+
+/** Start the game in 'play mode1 */
+window.start = start;
+
+window.getNextGameObjectId = getNextGameObjectId;
+window.addNextGameObjectId = addNextGameObjectId;
+window.mouseMove = mouseMove;
+window.keysDown = keysDown;
+window.getKeysUp = getKeysUp;
+window.getMouseUpFlag = getMouseUpFlag;
+window.drawStar = drawStar;
