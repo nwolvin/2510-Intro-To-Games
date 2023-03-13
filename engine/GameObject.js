@@ -2,7 +2,9 @@ class GameObject{
     name = ""
     type = ""
     components = []
+    hitboxes = []
     started = false
+    markedForDestroy = false;
     constructor(name){
         this.name = name;
         this.addComponent(new Transform());
@@ -21,6 +23,15 @@ class GameObject{
     }
     getComponent(name){
         return this.components.find(c=>c.name == name)
+    }
+
+
+    destroy() {
+        this.markedForDestroy = true;
+    }
+
+    static getObjectsByName(name) {
+        return SceneManager.getActiveScene().gameObjects.filter(gameObject => gameObject.name == name)
     }
 }
 

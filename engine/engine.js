@@ -7,7 +7,7 @@ import "./Transform.js"
 
 //Handle favicon
 const link = document.createElement("link");
-link.href = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🎮%3C/text%3E%3C/svg%3E";
+link.href = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🛩️%3C/text%3E%3C/svg%3E";
 link.rel = "icon";
 document.getElementsByTagName("head")[0].appendChild(link); // for IE6
 
@@ -20,8 +20,10 @@ let keysDown = []
 let keysUp = null
 let mouseX;
 let mouseY
+let mouseDownFlag = false;
 let mouseUpFlag = false; 
 let nextGameObjectId = 0; 
+let mouseLocation = {mouseX, mouseY}
 
 //Not the strings has to be all lowercase, e.g. keydown not keyDown or KeyDown
 document.addEventListener("keydown", keyDown)
@@ -45,18 +47,22 @@ function addNextGameObjectId(){
 }
 
 function mouseDown(e) {
-    //console.log("mouseDown: " + e.clientX + " " + e.clientY)
+    mouseDownFlag = true;
 }
 function mouseUp(e) {
+    mouseDownFlag = false; 
     mouseUpFlag = true; 
-    //console.log("mouseUp: " + e.clientX + " " + e.clientY)
 }
 function mouseMove(e) {
-    //console.log("mouseMove: " + e.clientX + " " + e.clientY)
+    mouseLocation.mouseX = e.clientX;
+    mouseLocation.mouseY = e.clientY;
 }
 
 function getMouseUpFlag(){
     return mouseUpFlag;
+}
+function getMouseDownFlag(){
+    return mouseDownFlag;
 }
 
 function keyUp(e) {
@@ -99,7 +105,14 @@ function engineUpdate() {
             }
         }
     }
-
+    //Handle destroy here
+    let keptGameObjects = []
+    for(let gameObject of scene.gameObjects){
+        if(!gameObject.markedForDestroy){
+            keptGameObjects.push(gameObject)
+        }
+    }
+    scene.gameObjects = keptGameObjects;
     //Handle destroy here
 
     for(let gameObject of scene.gameObjects){
@@ -166,7 +179,10 @@ window.start = start;
 window.getNextGameObjectId = getNextGameObjectId;
 window.addNextGameObjectId = addNextGameObjectId;
 window.mouseMove = mouseMove;
+window.mouseDownFlag = mouseDownFlag;
 window.keysDown = keysDown;
 window.getKeysUp = getKeysUp;
 window.getMouseUpFlag = getMouseUpFlag;
+window.getMouseDownFlag = getMouseDownFlag;
 window.drawStar = drawStar;
+window.mouseLocation = mouseLocation;

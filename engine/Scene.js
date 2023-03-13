@@ -8,9 +8,6 @@ class Scene {
         }
         addNextGameObjectId(); 
     }
-    removeGameObject(idx){
-        this.gameObjects.splice(idx, 1); 
-    }
 
     getObjectById(id){
         return SceneManager.getActiveScene().gameObjects.find(gameObject=>gameObject.id == id)
