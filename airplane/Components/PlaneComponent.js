@@ -21,6 +21,7 @@ class PlaneComponent extends Component {
             this.transform.y +=12
         }  
 
+        this.invincibleFlag = GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController").invincibleFlag
         //Mouse Movement
       /*
         this.transform.x = mouseLocation.mouseX;
@@ -32,7 +33,11 @@ class PlaneComponent extends Component {
 
     handleUpdate(component, eventName){
         if(eventName == "PlayerHit"){
-            console.log("HIT")
+            if(this.invincibleFlag == false){
+                this.transform.x = window.innerWidth/2;
+                this.transform.y = window.innerHeight - window.innerHeight/6;
+            }
+            
         }
     }
 }

@@ -4,6 +4,7 @@ class CloudComponent extends Component {
         this.transform.x = (Math.floor(Math.random() * (window.innerWidth*2/3))); 
         this.transform.y = -60
         this.circleNum = 8
+        this.colorNum = (Math.floor(Math.random() * 2))
         this.circles = []
 
         let i = 0

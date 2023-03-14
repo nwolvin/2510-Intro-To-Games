@@ -16,11 +16,15 @@ import "./Components/ProjectileDrawComponent.js"
 import "./Components/HitboxControllerComponent.js"
 import "./Components/HitboxDrawComponent.js"
 import "./Components/AddHitboxesController.js"
+import "./Components/PlayerLifeController.js"
+import "./Components/PlayerLifeIndicatorComponent.js"
+
 
 import "./GameObjects/CloudGameObject.js"
 import "./GameObjects/PlaneGameObject.js"
 import "./GameObjects/ProjectileGameObject.js"
 import "./GameObjects/TargetGameObject.js"
+import "./GameObjects/PlayerLifeGameObject.js"
 
 
 
@@ -30,12 +34,21 @@ class MainScene extends Scene {
         let plane = new PlaneGameObject();
         plane.name = "plane"; 
 
+        let playerLifeGameObject = new GameObject(); 
+        playerLifeGameObject.name = "playerLifeGameObject"
+        let playerLifeController = new PlayerLifeController()
+        playerLifeController.name = "playerLifeController"
+
+        playerLifeGameObject.addComponent(playerLifeController)
+
+
         this.addGameObject(new GameObject().addComponent(new DrawBackground()))
         this.addGameObject(new GameObject().addComponent(new AddCloudController()))
 
         this.addGameObject(plane)  
         this.addGameObject(new GameObject().addComponent(new ShootController()))
         this.addGameObject(new GameObject().addComponent(new AddTargetController()))
+        this.addGameObject(playerLifeGameObject);
         
     }
 }

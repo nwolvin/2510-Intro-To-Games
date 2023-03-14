@@ -16,6 +16,7 @@ class PlaneGameObject extends GameObject {
         planeDrawComponent.name ="planeDrawComponent"; 
         planeDrawComponent.rotate = 1
         planeDrawComponent.propeller = this.getComponent("planeComponent").propeller;
+        planeDrawComponent.canDrawFlag = true; 
         this.addComponent(planeDrawComponent);
         let hitbox1 = {
             x1Params: -120,
