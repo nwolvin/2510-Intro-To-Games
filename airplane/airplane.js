@@ -18,14 +18,23 @@ import "./Components/HitboxDrawComponent.js"
 import "./Components/AddHitboxesController.js"
 import "./Components/PlayerLifeController.js"
 import "./Components/PlayerLifeIndicatorComponent.js"
-
+import "../engine/Components/TextComponent.js"
+import "../engine/Components/TitleSceneControllerComponent.js"
 
 import "./GameObjects/CloudGameObject.js"
 import "./GameObjects/PlaneGameObject.js"
 import "./GameObjects/ProjectileGameObject.js"
 import "./GameObjects/TargetGameObject.js"
 import "./GameObjects/PlayerLifeGameObject.js"
+import "../engine/GameObjects/TextGameObject.js"
 
+
+class TitleScene extends Scene {
+    start(){
+        this.addGameObject(addText("Airplane Shooter", "60pt serif", "center", "black", window.innerWidth/2, window.innerHeight/2));
+        this.addGameObject(GameObject.addComponent(new TitleSceneControllerComponent()))
+    }
+}
 
 
 
@@ -48,8 +57,7 @@ class MainScene extends Scene {
         this.addGameObject(plane)  
         this.addGameObject(new GameObject().addComponent(new ShootController()))
         this.addGameObject(new GameObject().addComponent(new AddTargetController()))
-        this.addGameObject(playerLifeGameObject);
-        
+        this.addGameObject(playerLifeGameObject);   
     }
 }
 let mainScene = new MainScene()

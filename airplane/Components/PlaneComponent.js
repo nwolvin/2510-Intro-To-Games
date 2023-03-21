@@ -6,7 +6,6 @@ class PlaneComponent extends Component {
         this.rotate = 1
     }
     update() {
-        
         //Keyboard Movement
         if(keysDown["ArrowRight"] || keysDown["d"]){
             this.transform.x +=12

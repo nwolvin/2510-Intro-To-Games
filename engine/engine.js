@@ -131,7 +131,6 @@ function engineDraw() {
     canvas.height = window.innerHeight
     
     let scene = SceneManager.getActiveScene()
-    
     for(let gameObject of scene.gameObjects){
         for(let component of gameObject.components){
             if(component.draw){
@@ -160,6 +159,17 @@ function drawStar(starX, starY, radius) {
     ctx.fill();
 }
 
+function addText(text, font, textAlign, fillStyle, x, y){
+    let textGameObject = new TextGameObject();
+    textGameObject.font = font;
+    textGameObject.text = text; 
+    textGameObject.textAlign = textAlign; 
+    textGameObject.fillStyle = fillStyle; 
+    textGameObject.x = x; 
+    textGameObject.y = y; 
+    return textGameObject;   
+}
+
 
 function start(title){
     document.title = title
@@ -185,4 +195,5 @@ window.getKeysUp = getKeysUp;
 window.getMouseUpFlag = getMouseUpFlag;
 window.getMouseDownFlag = getMouseDownFlag;
 window.drawStar = drawStar;
+window.addText = addText;
 window.mouseLocation = mouseLocation;

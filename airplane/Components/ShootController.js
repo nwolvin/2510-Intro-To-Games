@@ -8,7 +8,7 @@ class ShootController extends Component {
       } */
 
       if(this.shootIntervalTime == 5){
-        if(getMouseDownFlag()){
+        if(getMouseDownFlag() || keysDown[" "]){
           shoot();
         }
         this.shootIntervalTime = 0;
