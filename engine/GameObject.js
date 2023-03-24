@@ -5,6 +5,7 @@ class GameObject{
     hitboxes = []
     started = false
     markedForDestroy = false;
+    markedDoNotDestroyOnLoad = false;
     constructor(name){
         this.name = name;
         this.addComponent(new Transform());
@@ -30,8 +31,20 @@ class GameObject{
         this.markedForDestroy = true;
     }
 
+    doNotDestroyOnLoad(){
+        this.markedDoNotDestroyOnLoad = true;
+    }
+
     static getObjectsByName(name) {
         return SceneManager.getActiveScene().gameObjects.filter(gameObject => gameObject.name == name)
+    }
+    
+    static instantiate(gameObject) {
+        SceneManager.getActiveScene().gameObjects.push(gameObject);
+        if (gameObject.start && !gameObject.started) {
+            gameObject.started = true
+            gameObject.start()
+        }
     }
 }
 

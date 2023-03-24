@@ -25,7 +25,7 @@ class ShootController extends Component {
      leftProjectile.y = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.y -50*GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
      leftProjectile.rotate = 1;
      leftProjectile.name="playerProjectile"
-     SceneManager.getActiveScene().addGameObject(leftProjectile);
+     GameObject.instantiate(leftProjectile);
 
      //Shoot Right Projectile
      let rightProjectile = new ProjectileGameObject();
@@ -33,7 +33,7 @@ class ShootController extends Component {
      rightProjectile.y = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.y -50*GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
      rightProjectile.rotate = 1;
      rightProjectile.name="playerProjectile"
-     SceneManager.getActiveScene().addGameObject(rightProjectile);
+     GameObject.instantiate(rightProjectile);
   }
 
 

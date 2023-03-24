@@ -2,6 +2,7 @@ class SceneManager {
     static scenes = []
     static currentSceneIndex = 0
     static changedSceneFlag = true
+    static previousSceneIndex = -1
     static startScenes(scenes, title){
         SceneManager.setScenes(scenes)
         start(title)
@@ -24,11 +25,19 @@ class SceneManager {
     static getActiveScene() {
         return SceneManager.scenes[SceneManager.currentSceneIndex];
     }
+    
+    static getPreviousScene() {
+        if(SceneManager.previousSceneIndex == -1){
+            return
+        }
+        return SceneManager.scenes[SceneManager.previousSceneIndex];
+    }
     static changeScene(index) {
         SceneManager.currentSceneIndex = index
         SceneManager.changedSceneFlag = true
     }
     static changeScene(index) {
+        SceneManager.previousSceneIndex = SceneManager.currentSceneIndex;
         SceneManager.currentSceneIndex = index
         SceneManager.changedSceneFlag = true
     }

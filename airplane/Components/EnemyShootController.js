@@ -24,7 +24,7 @@ class EnemyShootController extends Component {
           leftProjectile.x = this.parent.getComponent("target").transform.x
           leftProjectile.y = this.parent.getComponent("target").transform.y
           leftProjectile.rotate = -1
-          SceneManager.getActiveScene().addGameObject(leftProjectile);
+          GameObject.instantiate(leftProjectile);
         }
         this.shootIntervalTime = 0;   
       } else {

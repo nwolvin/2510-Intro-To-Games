@@ -15,7 +15,7 @@ class PlayerLifeController extends Component {
       /*  playerLifeGameObject.components[0].x = window.innerWidth/2;
         playerLifeGameObject.components[0].y = window.innerHeight/6;*/
 
-        SceneManager.getActiveScene().addGameObject(playerLifeGameObject);
+        GameObject.instantiate(playerLifeGameObject);
         //console.log(SceneManager.getActiveScene())
 
         }
