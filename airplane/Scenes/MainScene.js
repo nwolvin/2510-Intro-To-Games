@@ -10,14 +10,13 @@ class MainScene extends Scene {
 
         playerLifeGameObject.addComponent(playerLifeController)
 
-        this.addGameObject(new GameObject().addComponent(new DrawBackground()))
-        this.addGameObject(new GameObject().addComponent(new AddCloudController()))
+        GameObject.instantiate(new GameObject().addComponent(new DrawBackground()))
+        GameObject.instantiate(new GameObject().addComponent(new AddCloudController()))
 
-        this.addGameObject(plane)  
-        this.addGameObject(new GameObject().addComponent(new ShootController()))
-        this.addGameObject(new GameObject().addComponent(new AddTargetController()))
-        this.addGameObject(playerLifeGameObject);  
-        console.log(this.gameObjects); 
+        GameObject.instantiate(plane)  
+        GameObject.instantiate(new GameObject().addComponent(new ShootController()))
+        GameObject.instantiate(new GameObject().addComponent(new AddTargetController()))
+        GameObject.instantiate(playerLifeGameObject);  
     }
 }
 

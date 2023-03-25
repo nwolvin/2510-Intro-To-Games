@@ -18,20 +18,29 @@ import "./Components/Hitbox/HitboxDrawComponent.js"
 import "./Components/Hitbox/AddHitboxesController.js"
 import "./Components/PlayerLife/PlayerLifeController.js"
 import "./Components/PlayerLife/PlayerLifeIndicatorComponent.js"
-import "../engine/Components/TextComponent.js"
-import "../engine/Components/TitleSceneControllerComponent.js"
+import "./Components/Title/TitleSceneControllerComponent.js"
+import "../engine/Components/TextBoxTextComponent.js"
+import "../engine/Components/TextBoxRectangleComponent.js"
+import "../engine/EngineClasses/Camera.js"
 
 import "./GameObjects/CloudGameObject.js"
 import "./GameObjects/PlaneGameObject.js"
 import "./GameObjects/ProjectileGameObject.js"
 import "./GameObjects/TargetGameObject.js"
 import "./GameObjects/PlayerLifeGameObject.js"
-import "../engine/GameObjects/TextGameObject.js"
+import "../engine/GameObjects/RectangleGameObject.js"
+import "../engine/GameObjects/TextBoxGameObject.js"
 
 import "./Scenes/MainScene.js"
 import "./Scenes/TitleScene.js"
 
+
+let titleScene = new TitleScene()
 let mainScene = new MainScene()
 
-export default mainScene;
+window.allScenes = [titleScene, mainScene];
+
+
+
+
 

@@ -1,6 +1,6 @@
 class PlayerLifeController extends Component {
     start() {
-        this.livesCount = 5; 
+        this.livesCount = 2; 
         this.invincibleCounter = 0
         this.invincibleFlag = false
       for(let i = 0; i < this.livesCount; i++){
@@ -16,7 +16,6 @@ class PlayerLifeController extends Component {
         playerLifeGameObject.components[0].y = window.innerHeight/6;*/
 
         GameObject.instantiate(playerLifeGameObject);
-        //console.log(SceneManager.getActiveScene())
 
         }
     }
@@ -45,6 +44,9 @@ class PlayerLifeController extends Component {
                 }
                } else {
                 console.log("GAME OVER!")
+                console.log(SceneManager.getActiveScene())
+                SceneManager.changeScene(0);
+
                }
            }
            

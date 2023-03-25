@@ -3,7 +3,6 @@ class AddCloudController extends Component {
         this.i = 0;
         GameObject.instantiate(new CloudGameObject)
         GameObject.instantiate(new CloudGameObject)
-
     }
     update(){  
         if( this.i == 90){

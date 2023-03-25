@@ -1,8 +1,8 @@
-import "./SceneManager.js"
-import "./Component.js"
-import "./Scene.js"
-import "./GameObject.js"
-import "./Transform.js"
+import "./EngineClasses/SceneManager.js"
+import "./EngineClasses/Component.js"
+import "./EngineClasses/Scene.js"
+import "./EngineClasses/GameObject.js"
+import "./EngineClasses/Transform.js"
 
 
 //Handle favicon
@@ -86,6 +86,27 @@ function engineUpdate() {
     if (pause) return
     let scene = SceneManager.getActiveScene()
     if (SceneManager.changedSceneFlag && scene.start) {
+        scene.gameObjects = []
+        //Loop through the objects from the previous scene
+        //so can preserve some
+        let previousScene = SceneManager.getPreviousScene()
+        if(previousScene){
+            for(let gameObject of previousScene.gameObjects){
+                if(gameObject.markedDoNotDestroyOnLoad){
+                    scene.gameObjects.push(gameObject)
+                }
+            }
+        }
+    }
+    
+
+
+
+
+
+
+    ////////////
+    if (SceneManager.changedSceneFlag && scene.start) {
         scene.start()
         SceneManager.changedSceneFlag = false
     }
@@ -159,18 +180,6 @@ function drawStar(starX, starY, radius) {
     ctx.fill();
 }
 
-function addText(text, font, textAlign, fillStyle, x, y){
-    let textGameObject = new TextGameObject();
-    textGameObject.font = font;
-    textGameObject.text = text; 
-    textGameObject.textAlign = textAlign; 
-    textGameObject.fillStyle = fillStyle; 
-    textGameObject.x = x; 
-    textGameObject.y = y; 
-    return textGameObject;   
-}
-
-
 function start(title){
     document.title = title
     function gameLoop() {
@@ -195,5 +204,4 @@ window.getKeysUp = getKeysUp;
 window.getMouseUpFlag = getMouseUpFlag;
 window.getMouseDownFlag = getMouseDownFlag;
 window.drawStar = drawStar;
-window.addText = addText;
 window.mouseLocation = mouseLocation;

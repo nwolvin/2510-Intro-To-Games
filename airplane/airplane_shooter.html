@@ -9,9 +9,8 @@
     <canvas id="canv"></canvas>
     <script type="module">
         import "/engine/engine.js"
-        import mainScene from "./airplane.js"
-        SceneManager.addScene(mainScene);
-        start("Airplane Shooter")
+        import "/airplane/airplane.js"
+        SceneManager.startScenes(allScenes, "Airplane Shooter")
     </script>
 </body>
 
