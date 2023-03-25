@@ -1,6 +1,6 @@
 class ScoreGameObject extends GameObject {
     start(){
-  
+        
     }
 }
 

@@ -1,9 +1,9 @@
 class TextComponent extends Component {
     draw(ctx){
-        ctx.textAlign = this.textAlign;
-        ctx.fillStyle = this.fillStyle;
-        ctx.font = this.font; 
-        ctx.fillText( this.text, this.transform.x, this.transform.y)
+        ctx.textAlign = this.parent.textAlign;
+        ctx.fillStyle = this.parent.fillStyle;
+        ctx.font = this.parent.font
+        ctx.fillText(this.parent.text, this.transform.x, this.transform.y);
     }
 }
 

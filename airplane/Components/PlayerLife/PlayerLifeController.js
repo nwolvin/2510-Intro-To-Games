@@ -43,8 +43,6 @@ class PlayerLifeController extends Component {
                     }
                 }
                } else {
-                console.log("GAME OVER!")
-                console.log(SceneManager.getActiveScene())
                 SceneManager.changeScene(0);
 
                }
