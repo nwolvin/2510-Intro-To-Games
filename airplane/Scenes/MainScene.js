@@ -9,14 +9,13 @@ class MainScene extends Scene {
         playerLifeController.name = "playerLifeController"
 
         playerLifeGameObject.addComponent(playerLifeController)
-
+        GameObject.instantiate(playerLifeGameObject);  
         GameObject.instantiate(new GameObject().addComponent(new DrawBackground()))
-        GameObject.instantiate(new GameObject().addComponent(new AddCloudController()))
+        GameObject.instantiate(new GameObject().addComponent(new AddCloudController(2)))
 
         GameObject.instantiate(plane)  
         GameObject.instantiate(new GameObject().addComponent(new ShootController()))
         GameObject.instantiate(new GameObject().addComponent(new AddTargetController()))
-        GameObject.instantiate(playerLifeGameObject);  
     }
 }
 

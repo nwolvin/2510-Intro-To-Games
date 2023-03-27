@@ -46,6 +46,14 @@ class GameObject{
             gameObject.start()
         }
     }
+
+    static instantiateGameObjectAtLocation(gameObject, location) {
+        SceneManager.getActiveScene().gameObjects.splice(location, 0, gameObject);
+        if (gameObject.start && !gameObject.started) {
+            gameObject.started = true
+            gameObject.start()
+        }
+    }
 }
 
 

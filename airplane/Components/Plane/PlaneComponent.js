@@ -20,7 +20,13 @@ class PlaneComponent extends Component {
             this.transform.y +=12
         }  
 
-        this.invincibleFlag = GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController").invincibleFlag
+        if(GameObject.getObjectByName("playerLifeGameObject") && GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController")){
+            this.invincibleFlag = GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController").invincibleFlag
+        } else {
+            this.invincibleFlag = false;
+        }
+       
+        
         //Mouse Movement
       /*
         this.transform.x = mouseLocation.mouseX;

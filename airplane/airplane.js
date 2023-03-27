@@ -32,7 +32,7 @@ import "./GameObjects/PlayerLifeGameObject.js"
 import "../engine/GameObjects/RectangleGameObject.js"
 import "../engine/GameObjects/TextBoxGameObject.js"
 import "../engine/GameObjects/TextGameObject.js"
-
+import "../engine/GameObjects/ScoreGameObject.js"
 import "./Scenes/MainScene.js"
 import "./Scenes/TitleScene.js"
 

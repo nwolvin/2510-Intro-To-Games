@@ -2,7 +2,7 @@ class TitleSceneControllerComponent extends Component {
     start(){
        this.name = "titleController"
     }
-    update(){
+    update(){        
         if(keysDown.Enter){
             SceneManager.changeScene(1);
         }
