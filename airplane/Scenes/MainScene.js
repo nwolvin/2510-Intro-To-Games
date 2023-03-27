@@ -5,7 +5,7 @@ class MainScene extends Scene {
 
         let playerLifeGameObject = new GameObject(); 
         playerLifeGameObject.name = "playerLifeGameObject"
-        let playerLifeController = new PlayerLifeController()
+        let playerLifeController = new PlayerLifeController(5)
         playerLifeController.name = "playerLifeController"
 
         playerLifeGameObject.addComponent(playerLifeController)

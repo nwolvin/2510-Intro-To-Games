@@ -1,6 +1,10 @@
 class PlayerLifeController extends Component {
-    start() {
-        this.livesCount = 2; 
+    constructor(lives){
+        super()
+        this.livesCount = lives;
+    }
+    
+    start() { 
         this.invincibleCounter = 0
         this.invincibleFlag = false
       for(let i = 0; i < this.livesCount; i++){
@@ -34,7 +38,7 @@ class PlayerLifeController extends Component {
         if(eventName == "PlayerHit"){
            let objects = GameObject.getObjectsByName("playerLifeIndicatorGameObject")
            if(this.invincibleFlag == false) {
-            if(objects.length > 0) {
+            if(objects.length > 1) {
                 for (let i = objects.length - 1; i >= 0; i--){
                     if(objects[i].getComponent("lifeInd").idx == i){
                         objects[i].markedForDestroy = true;
