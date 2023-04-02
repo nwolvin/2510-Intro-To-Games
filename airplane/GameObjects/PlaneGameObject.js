@@ -37,7 +37,7 @@ class PlaneGameObject extends GameObject {
 
 
 
-        this.addComponent(new AddHitboxesController())
+        //this.addComponent(new AddHitboxesController())
         //Hitbox Component        
         let hitboxComponent = new HitboxControllerComponent(); 
         hitboxComponent.name ="planeHitbox"; 

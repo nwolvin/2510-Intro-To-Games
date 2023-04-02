@@ -1,10 +1,38 @@
 class ScoreGameObject extends GameObject {
+    constructor(fillStyle, hsFillStyle, x, y, textAlign, font, showScore, showHighScore) {
+        super();
+        this.fillStyle = fillStyle;
+        this.hsFillStyle = hsFillStyle;
+        this.x = x;
+        this.y = y;
+        this.textAlign = textAlign;
+        this.font = font;
+        this.showScore = showScore; 
+        this.showHighScore = showHighScore
+    }
     start(){       
-        this.score = 0;
-        let scoreText = new TextGameObject("black", window.innerWidth/2, window.innerWidth/16, this.score, "center", "40pt Trebuchet MS");   
-        scoreText.name = "scoreText";
+        if(sessionStorage.getItem("highScore")) {
+            this.highScore = sessionStorage.getItem("highScore"); 
+        } else {
+            this.highScore = 0;
+        } 
 
-        GameObject.instantiate(scoreText);
+        console.log(SceneManager.getActiveScene())
+        this.score = 0;
+       
+        let textController = new ScoreControllerComponent(); 
+        textController.name = "scoreTextController"; 
+        this.addComponent(textController);
+
+        if(this.showScore){
+            this.addComponent(new ScoreDrawComponent());
+        }
+        if(this.showHighScore){
+            this.addComponent(new HighScoreDrawComponent());
+        }
+        
+       
+
     }
 }
 

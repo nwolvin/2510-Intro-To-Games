@@ -18,10 +18,15 @@ import "./Components/Hitbox/HitboxDrawComponent.js"
 import "./Components/Hitbox/AddHitboxesController.js"
 import "./Components/PlayerLife/PlayerLifeController.js"
 import "./Components/PlayerLife/PlayerLifeIndicatorComponent.js"
-import "./Components/Title/TitleSceneControllerComponent.js"
-import "../engine/Components/TextBoxTextComponent.js"
-import "../engine/Components/TextBoxRectangleComponent.js"
-import "../engine/Components/TextComponent.js"
+
+import "../engine/Components/TextBox/TextBoxTextComponent.js"
+import "../engine/Components/TextBox/TextBoxRectangleComponent.js"
+import "../engine/Components/Text/TextComponent.js"
+import "../engine/Components/Text/TextControllerComponent.js"
+import "../engine/Components/Score/ScoreDrawComponent.js"
+import "../engine/Components/Score/HighScoreDrawComponent.js"
+import "../engine/Components/Score/ScoreControllerComponent.js"
+import "../engine/Components/MenuControllerComponent.js"
 import "../engine/EngineClasses/Camera.js"
 
 import "./GameObjects/CloudGameObject.js"
@@ -35,12 +40,13 @@ import "../engine/GameObjects/TextGameObject.js"
 import "../engine/GameObjects/ScoreGameObject.js"
 import "./Scenes/MainScene.js"
 import "./Scenes/TitleScene.js"
-
+import "./Scenes/EndGameScene.js"
 
 let titleScene = new TitleScene()
 let mainScene = new MainScene()
+let endGameScene = new EndGameScene()
 
-window.allScenes = [titleScene, mainScene];
+window.allScenes = [titleScene, mainScene, endGameScene];
 
 
 

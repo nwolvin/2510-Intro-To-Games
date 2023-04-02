@@ -1,7 +1,7 @@
 
 class TitleScene extends Scene {
     start(){
-        GameObject.instantiate(new GameObject().addComponent(new TitleSceneControllerComponent()));
+        GameObject.instantiate(new GameObject().addComponent(new MenuControllerComponent()));
         GameObject.instantiate(new GameObject().addComponent(new DrawBackground()));
        
         GameObject.instantiate(new GameObject().addComponent(new AddCloudController(3)));
@@ -19,12 +19,46 @@ class TitleScene extends Scene {
         GameObject.instantiate(playerLifeGameObject);
         GameObject.instantiate(plane);
 
-        let enterTextBox = new TextBoxGameObject("green", "white", window.innerWidth/2, window.innerWidth/2+window.innerWidth/16, 70, "ENTER", true);
-        let title =new TextGameObject("white", window.innerWidth/2, window.innerWidth/2 - window.innerWidth/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
+
+
+        let score1 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2-3, 0 + window.innerHeight/8
+        , "center", "30pt Trebuchet MS", false, true);
+        score1.name = "scoreGameObject";
+        let score2 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2+3, 0 + window.innerHeight/8
+        , "center", "30pt Trebuchet MS", false, true);
+        score2.name = "scoreGameObject";
+        let score3 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2, 0 + window.innerHeight/8-3
+        , "center", "30pt Trebuchet MS", false, true);
+        score3.name = "scoreGameObject";
+        let score4 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2, 0 + window.innerHeight/8+3
+        , "center", "30pt Trebuchet MS", false, true);
+        score4.name = "scoreGameObject";
+        let score5 =new ScoreGameObject("white", "yellow",window.innerWidth/2, 0 + window.innerHeight/8
+        , "center", "30pt Trebuchet MS", false, true);
+        score5.name = "scoreGameObject";
+
+        // let score =new ScoreGameObject("white", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/8, "center", "40pt Trebuchet MS");
+        // score.name = "scoreGameObject";
+        let enterTextBox = new TextBoxGameObject("green", "white", window.innerWidth/2, window.innerHeight/2+window.innerHeight/16, 70, "ENTER", true);
+        let title1 =new TextGameObject("#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/16 -3, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title2 =new TextGameObject("#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/16 + 3, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title3 =new TextGameObject("#121212", window.innerWidth/2 - 3, window.innerHeight/2 - window.innerHeight/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title4 =new TextGameObject("#121212", window.innerWidth/2 + 3, window.innerHeight/2 - window.innerHeight/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title5 =new TextGameObject("white", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
         enterTextBox.name = "enterTextBox";
-        title.name = "title";
+        title1.name = "title";
+        //GameObject.instantiate(score)
         GameObject.instantiate(enterTextBox);
-        GameObject.instantiate(title);
+        GameObject.instantiate(title1);
+        GameObject.instantiate(title2);
+        GameObject.instantiate(title3);
+        GameObject.instantiate(title4);
+        GameObject.instantiate(title5);
+        GameObject.instantiate(score1)
+        GameObject.instantiate(score2)
+        GameObject.instantiate(score3)
+        GameObject.instantiate(score4)
+        GameObject.instantiate(score5)
     }
 }
 

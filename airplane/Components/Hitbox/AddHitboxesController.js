@@ -3,6 +3,7 @@ class AddHitboxesController extends Component {
         for(let i = 0; i < this.parent.hitboxes.length; i++){
             let plane = GameObject.getObjectByName("plane").getComponent("planeComponent")
             let lives = GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController")
+            let score = GameObject.getObjectByName("scoreGameObject").getComponent("scoreTextController")
             
             let hitBox = new HitboxControllerComponent();
             hitBox.x1Params = this.parent.hitboxes[i].x1Params; 
@@ -14,6 +15,7 @@ class AddHitboxesController extends Component {
             hitBox.addListener(this)
             hitBox.addListener(plane)
             hitBox.addListener(lives)
+            hitBox.addListener(score)
 
             this.parent.addComponent(hitBox);
         }

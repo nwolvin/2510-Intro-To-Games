@@ -47,18 +47,10 @@ class PlayerLifeController extends Component {
                     }
                 }
                } else {
-                SceneManager.changeScene(0);
+                SceneManager.changeScene(2);
 
                }
            }
-           
-           
-
-
-           
-           
-           
-           
             this.livesCount--
 
         }
