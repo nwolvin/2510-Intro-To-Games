@@ -1,5 +1,5 @@
 class ScoreGameObject extends GameObject {
-    constructor(fillStyle, hsFillStyle, x, y, textAlign, font, showScore, showHighScore) {
+    constructor(fillStyle, hsFillStyle, x, y, textAlign, font, showScore, showHighScore, defScore) {
         super();
         this.fillStyle = fillStyle;
         this.hsFillStyle = hsFillStyle;
@@ -9,6 +9,7 @@ class ScoreGameObject extends GameObject {
         this.font = font;
         this.showScore = showScore; 
         this.showHighScore = showHighScore
+        this.score = defScore; 
     }
     start(){       
         if(sessionStorage.getItem("highScore")) {
@@ -16,9 +17,6 @@ class ScoreGameObject extends GameObject {
         } else {
             this.highScore = 0;
         } 
-
-        console.log(SceneManager.getActiveScene())
-        this.score = 0;
        
         let textController = new ScoreControllerComponent(); 
         textController.name = "scoreTextController"; 

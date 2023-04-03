@@ -22,24 +22,24 @@ class TitleScene extends Scene {
 
 
         let score1 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2-3, 0 + window.innerHeight/8
-        , "center", "30pt Trebuchet MS", false, true);
+        , "center", "30pt Trebuchet MS", false, true, 0);
         score1.name = "scoreGameObject";
         let score2 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2+3, 0 + window.innerHeight/8
-        , "center", "30pt Trebuchet MS", false, true);
+        , "center", "30pt Trebuchet MS", false, true, 0);
         score2.name = "scoreGameObject";
         let score3 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2, 0 + window.innerHeight/8-3
-        , "center", "30pt Trebuchet MS", false, true);
+        , "center", "30pt Trebuchet MS", false, true, 0);
         score3.name = "scoreGameObject";
         let score4 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2, 0 + window.innerHeight/8+3
-        , "center", "30pt Trebuchet MS", false, true);
+        , "center", "30pt Trebuchet MS", false, true, 0);
         score4.name = "scoreGameObject";
         let score5 =new ScoreGameObject("white", "yellow",window.innerWidth/2, 0 + window.innerHeight/8
-        , "center", "30pt Trebuchet MS", false, true);
+        , "center", "30pt Trebuchet MS", false, true, 0);
         score5.name = "scoreGameObject";
 
         // let score =new ScoreGameObject("white", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/8, "center", "40pt Trebuchet MS");
         // score.name = "scoreGameObject";
-        let enterTextBox = new TextBoxGameObject("green", "white", window.innerWidth/2, window.innerHeight/2+window.innerHeight/16, 70, "ENTER", true);
+        let enterTextBox = new TextBoxGameObject("green", "white", window.innerWidth/2, window.innerHeight/2+window.innerHeight/16, 70, "ENTER", true, 0);
         let title1 =new TextGameObject("#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/16 -3, "Airplane Shooter", "center", "40pt Trebuchet MS");
         let title2 =new TextGameObject("#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/16 + 3, "Airplane Shooter", "center", "40pt Trebuchet MS");
         let title3 =new TextGameObject("#121212", window.innerWidth/2 - 3, window.innerHeight/2 - window.innerHeight/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
