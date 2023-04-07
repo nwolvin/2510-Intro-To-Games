@@ -18,6 +18,7 @@ import "./Components/Hitbox/HitboxDrawComponent.js"
 import "./Components/Hitbox/AddHitboxesController.js"
 import "./Components/PlayerLife/PlayerLifeController.js"
 import "./Components/PlayerLife/PlayerLifeIndicatorComponent.js"
+import "./Components/CenteredCameraComponent.js"
 
 import "../engine/Components/TextBox/TextBoxTextComponent.js"
 import "../engine/Components/TextBox/TextBoxRectangleComponent.js"
@@ -45,9 +46,9 @@ import "./Scenes/EndGameScene.js"
 let defScale = 7/20; 
 
 
-let titleScene = new TitleScene()
-let mainScene = new MainScene()
-let endGameScene = new EndGameScene()
+let titleScene = new TitleScene("white")
+let mainScene = new MainScene("white")
+let endGameScene = new EndGameScene("white")
 
 window.allScenes = [titleScene, mainScene, endGameScene];
 

@@ -92,8 +92,10 @@ function engineUpdate() {
 
     if (pause) return
     let scene = SceneManager.getActiveScene()
-    if (SceneManager.changedSceneFlag && scene.start) {
+    if (SceneManager.changedSceneFlag && scene.start) {      
+        let camera = scene.gameObjects[0]
         scene.gameObjects = []
+        scene.gameObjects.push(camera)
         //Loop through the objects from the previous scene
         //so can preserve some
         let previousScene = SceneManager.getPreviousScene()
@@ -106,7 +108,7 @@ function engineUpdate() {
         }
     }
     
-    ////////////
+    //Handle Change Scene
     if (SceneManager.changedSceneFlag && scene.start) {
         scene.start()
         SceneManager.changedSceneFlag = false
@@ -148,9 +150,41 @@ function engineUpdate() {
     keysUp = null; 
 }
 
+let requestedAspectRatio = 16/9 ; 
+let logicalWidth = 1; 
+let letterboxColor = "gray"
+
+
 function engineDraw() {
+
+    ctx.fillStyle = Camera.main.fillStyle;
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    let browserAspectRatio = canvas.width / canvas.height;
+    let offsetX = 0;
+    let offsetY = 0;
+    let browserWidth = canvas.width
+    if (requestedAspectRatio > browserAspectRatio) {
+        let desiredHeight = canvas.width / requestedAspectRatio;
+        let amount = (canvas.height - desiredHeight) / 2;
+        offsetY = amount;
+    }
+    else {
+        let desiredWidth = canvas.height * requestedAspectRatio
+        let amount = (canvas.width - desiredWidth) / 2;
+        offsetX = amount
+        browserWidth -= 2 * amount
+    }
+    
+    
     
     let scene = SceneManager.getActiveScene()
+
+    ctx.save();
+    let logicalScaling = browserWidth / logicalWidth
+    ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2)
+    ctx.scale(logicalScaling, logicalScaling)
+
+    ctx.translate(-Camera.main.transform.x, -Camera.main.transform.y)
 
     //Draw each layer in order
     if(scene.gameObjects.length > 0){
@@ -173,7 +207,25 @@ function engineDraw() {
         }
     }
 
-    
+    ctx.restore();
+
+    if (requestedAspectRatio > browserAspectRatio) {
+        let desiredHeight = canvas.width / requestedAspectRatio;
+        let amount = (canvas.height - desiredHeight) / 2;
+        ctx.fillStyle = letterboxColor
+        ctx.fillRect(0, 0, canvas.width, amount);
+        ctx.fillRect(0, canvas.height - amount, canvas.width, amount);
+    }
+    else {
+        let desiredWidth = canvas.height * requestedAspectRatio
+        let amount = (canvas.width - desiredWidth) / 2;
+        ctx.fillStyle = letterboxColor
+        ctx.fillRect(0, 0, amount, canvas.height);
+        ctx.fillRect(canvas.width - amount, 0, amount, canvas.height);
+    }
+
+
+
 }
 
 function getKeysUp(){
@@ -195,8 +247,16 @@ function drawStar(starX, starY, radius) {
     ctx.fill();
 }
 
-function start(title){
+function start(title, settings ={}){
     document.title = title
+    
+    document.title = title
+    if (settings) {
+        requestedAspectRatio = settings.aspectRatio ? settings.aspectRatio : 16 / 9
+        letterboxColor = settings.letterboxColor ? settings.letterboxColor : "black"
+        logicalWidth = settings.logicalWidth ? settings.logicalWidth : 1440
+    }
+
     function gameLoop() {
         engineUpdate()
         engineDraw()

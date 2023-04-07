@@ -9,11 +9,13 @@ class Camera extends Component {
       this.fillStyle = fillStyle
     }
   
-    draw(ctx) {
-     
-      ctx.fillStyle = this.fillStyle
-    
-      ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height)
+    static get main(){
+      let scene = SceneManager.getActiveScene();
+
+      //The camera is the first game object's second component
+      //(The first component is a transform.)
+      return scene.gameObjects[0].components[1]
     }
+    
   }
   window.Camera = Camera;

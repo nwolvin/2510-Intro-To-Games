@@ -67,6 +67,8 @@ class EndGameScene extends Scene {
         GameObject.instantiate(score3)
         GameObject.instantiate(score4)
         GameObject.instantiate(score5)
+
+        Camera.main.parent.addComponent(new CenteredCameraComponent());
     }
 }
 

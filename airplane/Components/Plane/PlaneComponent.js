@@ -19,6 +19,8 @@ class PlaneComponent extends Component {
             this.transform.y +=12
         }  
 
+        console.log(this.transform.x+" "+this.transform.y+"\n"+canvas.width+" "+canvas.height)
+
         if(GameObject.getObjectByName("playerLifeGameObject") && GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController")){
             this.invincibleFlag = GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController").invincibleFlag
         } else {

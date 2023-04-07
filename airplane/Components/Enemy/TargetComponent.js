@@ -1,7 +1,7 @@
 class TargetComponent extends Component {
     start() {
         this.transform.x = canvas.width*1/6+(Math.floor(Math.random() * (canvas.width*2/3))); 
-        this.transform.y = -300
+        this.transform.y = -400
         this.direction = (Math.floor(Math.random() * 2)); 
         this.directionTime = 0;
         this.drawTime = 0; 

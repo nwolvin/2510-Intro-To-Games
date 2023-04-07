@@ -1,5 +1,10 @@
 class Scene {
     gameObjects = []
+    
+    constructor(fillStyle){
+        this.addGameObject(new GameObject("CameraGameObject").addComponent(new Camera(fillStyle)))
+      }
+    
     addGameObject(gameObject){
         this.gameObjects.push(gameObject);
         if(gameObject.start && !gameObject.started){

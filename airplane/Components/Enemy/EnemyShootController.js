@@ -3,7 +3,7 @@ class EnemyShootController extends Component {
       this.shootIntervalTime = 0;
       this.transform.x = this.parent.getComponent("target").transform.x
       this.transform.y = this.parent.getComponent("target").transform.y
-      this.waitToFireIntervalTime = 0;
+      this.waitToFireIntervalTime =50;
       this.canFireFlag = false;
     }
     update(){
