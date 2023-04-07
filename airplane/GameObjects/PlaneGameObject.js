@@ -1,6 +1,7 @@
 class PlaneGameObject extends GameObject {
     start(){
         this.rotate = 1
+        this.planeScale = 7/20;
         //Plane Component        
         let planeComponent = new PlaneComponent(); 
         planeComponent.name ="planeComponent"; 

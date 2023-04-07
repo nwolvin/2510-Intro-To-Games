@@ -1,7 +1,6 @@
 class TargetComponent extends Component {
     start() {
-        this.transform.sx = GameObject.getObjectByName("plane").getComponent("planeDrawComponent").transform.sx;
-        this.transform.x = window.innerWidth*1/6+(Math.floor(Math.random() * (window.innerWidth*2/3))); 
+        this.transform.x = canvas.width*1/6+(Math.floor(Math.random() * (canvas.width*2/3))); 
         this.transform.y = -300
         this.direction = (Math.floor(Math.random() * 2)); 
         this.directionTime = 0;

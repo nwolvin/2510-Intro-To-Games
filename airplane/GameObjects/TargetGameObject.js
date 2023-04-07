@@ -10,6 +10,7 @@ class TargetGameObject extends GameObject {
         enemyPlanePropeller.name = "propeller"
         this.addComponent(enemyPlanePropeller)
 
+        this.planeScale = 7/20;
         let enemyPlaneDraw = new EnemyPlaneDrawComponent()
         enemyPlaneDraw.rotate = -1
         enemyPlaneDraw.propeller = this.getComponent("propeller").propeller

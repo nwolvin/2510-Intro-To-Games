@@ -20,17 +20,18 @@ class ShootController extends Component {
   function shoot(){
      
     //Shoot Left Projectile
+    
      let leftProjectile = new ProjectileGameObject();
-     leftProjectile.x = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.x -70*GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
-     leftProjectile.y = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.y -50*GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
+     leftProjectile.x = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.x -70*GameObject.getObjectByName("plane").planeScale;
+     leftProjectile.y = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.y -50*GameObject.getObjectByName("plane").planeScale;
      leftProjectile.rotate = 1;
      leftProjectile.name="playerProjectile"
      GameObject.instantiate(leftProjectile);
 
      //Shoot Right Projectile
      let rightProjectile = new ProjectileGameObject();
-     rightProjectile.x = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.x +70*GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
-     rightProjectile.y = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.y -50*GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
+     rightProjectile.x = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.x +70*GameObject.getObjectByName("plane").planeScale;
+     rightProjectile.y = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.y -50*GameObject.getObjectByName("plane").planeScale;
      rightProjectile.rotate = 1;
      rightProjectile.name="playerProjectile"
      GameObject.instantiate(rightProjectile);

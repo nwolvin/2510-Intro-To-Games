@@ -16,6 +16,9 @@ document.getElementsByTagName("head")[0].appendChild(link); // for IE6
 let canvas = document.querySelector("#canv")
 let ctx = canvas.getContext("2d");
 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 let keysDown = []
 let keysUp = null
 let mouseX;
@@ -99,12 +102,6 @@ function engineUpdate() {
         }
     }
     
-
-
-
-
-
-
     ////////////
     if (SceneManager.changedSceneFlag && scene.start) {
         scene.start()
@@ -148,8 +145,8 @@ function engineUpdate() {
 }
 
 function engineDraw() {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     
     let scene = SceneManager.getActiveScene()
     for(let gameObject of scene.gameObjects){
@@ -192,6 +189,27 @@ function start(title){
 
 }
 
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookieSplits = decodedCookie.split(';');
+    for(const element of cookieSplits) {
+        let c = element;
+        while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";" + "path=/";
+}
+
+
 /** Start the game in 'play mode1 */
 window.start = start;
 
@@ -205,3 +223,6 @@ window.getMouseUpFlag = getMouseUpFlag;
 window.getMouseDownFlag = getMouseDownFlag;
 window.drawStar = drawStar;
 window.mouseLocation = mouseLocation;
+window.getCookie = getCookie; 
+window.setCookie = setCookie;
+window.canvas = canvas; 

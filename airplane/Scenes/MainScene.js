@@ -11,20 +11,20 @@ class MainScene extends Scene {
 
         playerLifeGameObject.addComponent(playerLifeController)
 
-        sessionStorage.setItem("score", 0);
-        let score1 =new ScoreGameObject("#121212", "#121212", window.innerWidth - window.innerWidth/50 -3, window.innerHeight - window.innerHeight/40
+        setCookie("score", 0)
+        let score1 =new ScoreGameObject("#121212", "#121212", canvas.width - canvas.width/50 -3, canvas.height - canvas.height/40
         , "center", "30pt Trebuchet MS", true, true, 0);
         score1.name = "scoreGameObject";
-        let score2 =new ScoreGameObject("#121212", "#121212", window.innerWidth- window.innerWidth/50+3, window.innerHeight - window.innerHeight/40
+        let score2 =new ScoreGameObject("#121212", "#121212", canvas.width- canvas.width/50+3, canvas.height - canvas.height/40
         , "center", "30pt Trebuchet MS", true, true, 0);
         score2.name = "scoreGameObject";
-        let score3 =new ScoreGameObject("#121212", "#121212", window.innerWidth- window.innerWidth/50, window.innerHeight - window.innerHeight/40-3
+        let score3 =new ScoreGameObject("#121212", "#121212", canvas.width- canvas.width/50, canvas.height - canvas.height/40-3
         , "center", "30pt Trebuchet MS", true, true, 0);
         score3.name = "scoreGameObject";
-        let score4 =new ScoreGameObject("#121212", "#121212", window.innerWidth- window.innerWidth/50, window.innerHeight - window.innerHeight/40+3
+        let score4 =new ScoreGameObject("#121212", "#121212", canvas.width- canvas.width/50, canvas.height - canvas.height/40+3
         , "center", "30pt Trebuchet MS", true, true, 0);
         score4.name = "scoreGameObject";
-        let score5 =new ScoreGameObject("white", "yellow", window.innerWidth- window.innerWidth/50, window.innerHeight - window.innerHeight/40
+        let score5 =new ScoreGameObject("white", "yellow", canvas.width- canvas.width/50, canvas.height - canvas.height/40
         , "center", "30pt Trebuchet MS", true, true, 0);
         score5.name = "scoreGameObject";
 

@@ -42,13 +42,15 @@ import "./Scenes/MainScene.js"
 import "./Scenes/TitleScene.js"
 import "./Scenes/EndGameScene.js"
 
+let defScale = 7/20; 
+
+
 let titleScene = new TitleScene()
 let mainScene = new MainScene()
 let endGameScene = new EndGameScene()
 
 window.allScenes = [titleScene, mainScene, endGameScene];
 
-
-
+window.defScale = defScale
 
 

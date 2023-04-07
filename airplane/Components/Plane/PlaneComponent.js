@@ -1,8 +1,7 @@
 class PlaneComponent extends Component {
     start() {
-        this.transform.x = window.innerWidth/2;
-        this.transform.y = window.innerHeight - window.innerHeight/6;
-        this.transform.sx = 7/20
+        this.transform.x = canvas.width/2;
+        this.transform.y = canvas.height - canvas.height/6;
         this.rotate = 1
     }
     update() {
@@ -39,8 +38,8 @@ class PlaneComponent extends Component {
     handleUpdate(component, eventName){
         if(eventName == "PlayerHit"){
             if(this.invincibleFlag == false){
-                this.transform.x = window.innerWidth/2;
-                this.transform.y = window.innerHeight - window.innerHeight/6;
+                this.transform.x = canvas.width/2;
+                this.transform.y = canvas.height - canvas.height/6;
             }
             
         }

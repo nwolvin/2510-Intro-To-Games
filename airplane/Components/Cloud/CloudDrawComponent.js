@@ -2,7 +2,6 @@ class CloudDrawComponent extends Component {
     draw(ctx){  
         this.transform.x = this.parent.getComponent("cloud").transform.x
         this.transform.y = this.parent.getComponent("cloud").transform.y
-        this.transform.sx = this.parent.getComponent("cloud").transform.sx
         this.circles = this.parent.getComponent("cloud").circles
         this.circleNum = this.parent.getComponent("cloud").circleNum
         this.colorNum = this.parent.getComponent("cloud").colorNum

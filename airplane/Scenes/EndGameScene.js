@@ -19,38 +19,38 @@ class EndGameScene extends Scene {
         GameObject.instantiate(playerLifeGameObject);
         GameObject.instantiate(plane);
 
-        console.log(window.innerHeight)
-        console.log(window.innerWidth)
-
         let prevScore; 
-        if(sessionStorage.getItem("score")) {
-            prevScore = sessionStorage.getItem("score"); 
+
+        
+
+        if(getCookie("score")) {
+            prevScore = getCookie("score");         
         } else {
             prevScore = 0;
         } 
 
-        let score1 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2-3, window.innerHeight/2 - window.innerHeight/40
+        let score1 =new ScoreGameObject("#121212", "#121212", canvas.width/2-3, canvas.height/2 - canvas.height/40
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score1.name = "scoreGameObject";
-        let score2 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2+3, window.innerHeight/2 - window.innerHeight/40
+        let score2 =new ScoreGameObject("#121212", "#121212", canvas.width/2+3, canvas.height/2 - canvas.height/40
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score2.name = "scoreGameObject";
-        let score3 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/40-3
+        let score3 =new ScoreGameObject("#121212", "#121212", canvas.width/2, canvas.height/2 - canvas.height/40-3
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score3.name = "scoreGameObject";
-        let score4 =new ScoreGameObject("#121212", "#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/40+3
+        let score4 =new ScoreGameObject("#121212", "#121212", canvas.width/2, canvas.height/2 - canvas.height/40+3
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score4.name = "scoreGameObject";
-        let score5 =new ScoreGameObject("white", "yellow",window.innerWidth/2, window.innerHeight/2 - window.innerHeight/40
+        let score5 =new ScoreGameObject("white", "yellow",canvas.width/2, canvas.height/2 - canvas.height/40
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score5.name = "scoreGameObject";
 
-        let enterTextBox = new TextBoxGameObject("green", "white", window.innerWidth/2, window.innerHeight/2+window.innerHeight/16, 70, "RETRY", true, prevScore);
-        let title1 =new TextGameObject("#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/6 -3, "Game Over", "center", "40pt Trebuchet MS");
-        let title2 =new TextGameObject("#121212", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/6 + 3, "Game Over", "center", "40pt Trebuchet MS");
-        let title3 =new TextGameObject("#121212", window.innerWidth/2 - 3, window.innerHeight/2 - window.innerHeight/6, "Game Over", "center", "40pt Trebuchet MS");
-        let title4 =new TextGameObject("#121212", window.innerWidth/2 + 3, window.innerHeight/2 - window.innerHeight/6, "Game Over", "center", "40pt Trebuchet MS");
-        let title5 =new TextGameObject("white", window.innerWidth/2, window.innerHeight/2 - window.innerHeight/6, "Game Over", "center", "40pt Trebuchet MS");
+        let enterTextBox = new TextBoxGameObject("green", "white", canvas.width/2, canvas.height/2+canvas.height/16, 70, "RETRY", true, prevScore);
+        let title1 =new TextGameObject("#121212", canvas.width/2, canvas.height/2 - canvas.height/6 -3, "Game Over", "center", "40pt Trebuchet MS");
+        let title2 =new TextGameObject("#121212", canvas.width/2, canvas.height/2 - canvas.height/6 + 3, "Game Over", "center", "40pt Trebuchet MS");
+        let title3 =new TextGameObject("#121212", canvas.width/2 - 3, canvas.height/2 - canvas.height/6, "Game Over", "center", "40pt Trebuchet MS");
+        let title4 =new TextGameObject("#121212", canvas.width/2 + 3, canvas.height/2 - canvas.height/6, "Game Over", "center", "40pt Trebuchet MS");
+        let title5 =new TextGameObject("white", canvas.width/2, canvas.height/2 - canvas.height/6, "Game Over", "center", "40pt Trebuchet MS");
         enterTextBox.name = "enterTextBox";
         title1.name = "title";
         //GameObject.instantiate(score)

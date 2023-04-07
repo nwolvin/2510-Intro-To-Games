@@ -1,5 +1,6 @@
 class ScoreControllerComponent extends Component {
     start(){
+        setCookie("score", 0);    
         this.score = this.parent.score; 
         this.highScore = this.parent.highScore; 
         this.transform.x = this.parent.x;
@@ -12,10 +13,10 @@ class ScoreControllerComponent extends Component {
     handleUpdate(component, eventName){
         if(eventName == "TargetHit"){
             this.score++;
-            sessionStorage.setItem("score", this.score);
+            setCookie("score", this.score);
             if(this.score > this.highScore){
                 this.highScore = this.score; 
-                sessionStorage.setItem("highScore", this.highScore);
+                setCookie("highScore", this.highScore); 
             }
         }
     }
