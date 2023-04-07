@@ -86,6 +86,10 @@ function keyDown(e) {
 }
 
 function engineUpdate() {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
     if (pause) return
     let scene = SceneManager.getActiveScene()
     if (SceneManager.changedSceneFlag && scene.start) {
@@ -145,17 +149,31 @@ function engineUpdate() {
 }
 
 function engineDraw() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
     
     let scene = SceneManager.getActiveScene()
-    for(let gameObject of scene.gameObjects){
-        for(let component of gameObject.components){
-            if(component.draw){
-                component.draw(ctx)
+
+    //Draw each layer in order
+    if(scene.gameObjects.length > 0){
+        let min = scene.gameObjects
+        .map(go => go.layer)
+        .reduce((previous, current)=>Math.min(previous, current))
+    
+        let max = scene.gameObjects
+        .map(go => go.layer).reduce((previous, current)=>Math.max(previous, current))
+        
+        for (let i = min; i <= max; i++) {
+            let layerGameObjects = scene.gameObjects.filter(go=>go.layer==i)
+            for(let gameObject of layerGameObjects){
+                for(let component of gameObject.components){
+                    if(component.draw){
+                        component.draw(ctx)
+                    }
+                }
             }
         }
     }
+
+    
 }
 
 function getKeysUp(){

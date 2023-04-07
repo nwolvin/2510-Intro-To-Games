@@ -2,9 +2,11 @@
 class EndGameScene extends Scene {
     start(){
         GameObject.instantiate(new GameObject().addComponent(new MenuControllerComponent()));
-        GameObject.instantiate(new GameObject().addComponent(new DrawBackground()));
+        let backGroundGameObject  = new GameObject().addComponent(new DrawBackground());
+        backGroundGameObject.layer = -1;
+        GameObject.instantiate(backGroundGameObject);
        
-        GameObject.instantiate(new GameObject().addComponent(new AddCloudController(3)));
+        GameObject.instantiate(new GameObject().addComponent(new AddCloudController()));
        
         let plane = new PlaneGameObject();
         plane.name = "plane"; 

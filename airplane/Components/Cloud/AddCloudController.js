@@ -1,19 +1,24 @@
 class AddCloudController extends Component {
-    constructor(num){
-        super();
-        this.cloudArrayLocation = num; 
-    }
     start(){
 
 
         this.i = 0;
-        GameObject.instantiateGameObjectAtLocation(new CloudGameObject, this.cloudArrayLocation)
-        GameObject.instantiateGameObjectAtLocation(new CloudGameObject, this.cloudArrayLocation)
+
+        let cloud1 = new CloudGameObject();
+        cloud1.layer = 1; 
+
+        let cloud2 = new CloudGameObject();
+        cloud2.layer = 1; 
+
+        GameObject.instantiate(cloud1)
+        GameObject.instantiate(cloud2)
     }
     update(){  
         if( this.i == 90){
             let cloudGameObject = new CloudGameObject()
-            GameObject.instantiateGameObjectAtLocation(cloudGameObject, this.cloudArrayLocation)
+            cloudGameObject.layer = 1; 
+
+            GameObject.instantiate(cloudGameObject)
             this.i = 0
         } else {
             this.i++;

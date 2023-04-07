@@ -30,8 +30,10 @@ class MainScene extends Scene {
 
 
         GameObject.instantiate(playerLifeGameObject);  
-        GameObject.instantiate(new GameObject().addComponent(new DrawBackground()))
-        GameObject.instantiate(new GameObject().addComponent(new AddCloudController(2)))
+        let backGroundGameObject  = new GameObject().addComponent(new DrawBackground());
+        backGroundGameObject.layer = -1;
+        GameObject.instantiate(backGroundGameObject);
+        GameObject.instantiate(new GameObject().addComponent(new AddCloudController()))
 
         GameObject.instantiate(plane)  
         GameObject.instantiate(new GameObject().addComponent(new ShootController()))

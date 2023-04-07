@@ -3,6 +3,7 @@ class GameObject{
     type = ""
     components = []
     hitboxes = []
+    layer = 2
     started = false
     markedForDestroy = false;
     markedDoNotDestroyOnLoad = false;
@@ -41,14 +42,6 @@ class GameObject{
     
     static instantiate(gameObject) {
         SceneManager.getActiveScene().gameObjects.push(gameObject);
-        if (gameObject.start && !gameObject.started) {
-            gameObject.started = true
-            gameObject.start()
-        }
-    }
-
-    static instantiateGameObjectAtLocation(gameObject, location) {
-        SceneManager.getActiveScene().gameObjects.splice(location, 0, gameObject);
         if (gameObject.start && !gameObject.started) {
             gameObject.started = true
             gameObject.start()
