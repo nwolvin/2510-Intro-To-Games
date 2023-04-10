@@ -151,7 +151,7 @@ function engineUpdate() {
 }
 
 let requestedAspectRatio = 16/9 ; 
-let logicalWidth = 1; 
+let logicalWidth = 1440; 
 let letterboxColor = "gray"
 
 
@@ -304,3 +304,5 @@ window.mouseLocation = mouseLocation;
 window.getCookie = getCookie; 
 window.setCookie = setCookie;
 window.canvas = canvas; 
+window.logicalWidth = logicalWidth; 
+window.logicalHeight = logicalWidth * 9 / 16

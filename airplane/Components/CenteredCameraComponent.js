@@ -1,7 +1,7 @@
 class CenteredCameraComponent extends Component{
     start(){
-        this.transform.x = canvas.width/2;
-        this.transform.y = canvas.height/2;
+        // this.transform.x = 0;
+        // this.transform.y = canvas.height/2;
         // this.transform.sx = 3;
         // this.transform.sy = 3;
 

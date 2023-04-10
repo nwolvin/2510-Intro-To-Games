@@ -6,7 +6,7 @@ class ProjectileComponent extends Component {
         //this.transform.sx = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
     }
     update() {
-        if(this.transform.y > 2000 || this.transform.y < 0) {
+        if(this.transform.y > 0 + logicalHeight/2 || this.transform.y < 0 - logicalHeight/2) {
            this.parent.destroy()
         } else {
             this.transform.y -= 10*this.rotate;

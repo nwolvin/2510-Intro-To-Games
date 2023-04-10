@@ -16,7 +16,7 @@ class PlayerLifeController extends Component {
 
         playerLifeGameObject.addComponent(playerLifeIndicator)
 
-      /*  playerLifeGameObject.components[0].x = canvas.width/2;
+      /*  playerLifeGameObject.components[0].x = 0;
         playerLifeGameObject.components[0].y = canvas.height/6;*/
 
         GameObject.instantiate(playerLifeGameObject);

@@ -22,30 +22,30 @@ class TitleScene extends Scene {
         GameObject.instantiate(playerLifeGameObject);
         GameObject.instantiate(plane);
 
-        let score1 =new ScoreGameObject("#121212", "#121212", canvas.width/2-3, 0 + canvas.height/8
+        let score1 =new ScoreGameObject("#121212", "#121212", 0-3, 0 + - logicalHeight/2 + canvas.height/8
         , "center", "30pt Trebuchet MS", false, true, 0);
         score1.name = "scoreGameObject";
-        let score2 =new ScoreGameObject("#121212", "#121212", canvas.width/2+3, 0 + canvas.height/8
+        let score2 =new ScoreGameObject("#121212", "#121212", 0+3, 0 + - logicalHeight/2 + canvas.height/8
         , "center", "30pt Trebuchet MS", false, true, 0);
         score2.name = "scoreGameObject";
-        let score3 =new ScoreGameObject("#121212", "#121212", canvas.width/2, 0 + canvas.height/8-3
+        let score3 =new ScoreGameObject("#121212", "#121212", 0, 0 + - logicalHeight/2 + canvas.height/8-3
         , "center", "30pt Trebuchet MS", false, true, 0);
         score3.name = "scoreGameObject";
-        let score4 =new ScoreGameObject("#121212", "#121212", canvas.width/2, 0 + canvas.height/8+3
+        let score4 =new ScoreGameObject("#121212", "#121212", 0, 0 + - logicalHeight/2 + canvas.height/8+3
         , "center", "30pt Trebuchet MS", false, true, 0);
         score4.name = "scoreGameObject";
-        let score5 =new ScoreGameObject("white", "yellow",canvas.width/2, 0 + canvas.height/8
+        let score5 =new ScoreGameObject("white", "yellow",0, 0 + - logicalHeight/2 + canvas.height/8
         , "center", "30pt Trebuchet MS", false, true, 0);
         score5.name = "scoreGameObject";
 
-        // let score =new ScoreGameObject("white", canvas.width/2, canvas.height/2 - canvas.height/8, "center", "40pt Trebuchet MS");
+        // let score =new ScoreGameObject("white", 0, 0 - - logicalHeight/2 + canvas.height/8, "center", "40pt Trebuchet MS");
         // score.name = "scoreGameObject";
-        let enterTextBox = new TextBoxGameObject("green", "white", canvas.width/2, canvas.height/2+canvas.height/16, 70, "ENTER", true, 0);
-        let title1 =new TextGameObject("#121212", canvas.width/2, canvas.height/2 - canvas.height/16 -3, "Airplane Shooter", "center", "40pt Trebuchet MS");
-        let title2 =new TextGameObject("#121212", canvas.width/2, canvas.height/2 - canvas.height/16 + 3, "Airplane Shooter", "center", "40pt Trebuchet MS");
-        let title3 =new TextGameObject("#121212", canvas.width/2 - 3, canvas.height/2 - canvas.height/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
-        let title4 =new TextGameObject("#121212", canvas.width/2 + 3, canvas.height/2 - canvas.height/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
-        let title5 =new TextGameObject("white", canvas.width/2, canvas.height/2 - canvas.height/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let enterTextBox = new TextBoxGameObject("green", "white", 0, 0+canvas.height/16, 70, "ENTER", true, 0);
+        let title1 =new TextGameObject("#121212", 0, 0 - canvas.height/16 -3, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title2 =new TextGameObject("#121212", 0, 0 - canvas.height/16 + 3, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title3 =new TextGameObject("#121212", 0 - 3, 0 - canvas.height/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title4 =new TextGameObject("#121212", 0 + 3, 0 - canvas.height/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
+        let title5 =new TextGameObject("white", 0, 0 - canvas.height/16, "Airplane Shooter", "center", "40pt Trebuchet MS");
         enterTextBox.name = "enterTextBox";
         title1.name = "title";
         //GameObject.instantiate(score)

@@ -1,7 +1,7 @@
 class PlaneComponent extends Component {
     start() {
-        this.transform.x = canvas.width/2;
-        this.transform.y = canvas.height - canvas.height/6;
+        this.transform.x = 0;
+        this.transform.y = 0 + logicalHeight/2 - logicalHeight/6;
         this.rotate = 1
     }
     update() {
@@ -18,8 +18,6 @@ class PlaneComponent extends Component {
         if(keysDown["ArrowDown"] || keysDown["s"]){
             this.transform.y +=12
         }  
-
-        console.log(this.transform.x+" "+this.transform.y+"\n"+canvas.width+" "+canvas.height)
 
         if(GameObject.getObjectByName("playerLifeGameObject") && GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController")){
             this.invincibleFlag = GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController").invincibleFlag
@@ -40,8 +38,8 @@ class PlaneComponent extends Component {
     handleUpdate(component, eventName){
         if(eventName == "PlayerHit"){
             if(this.invincibleFlag == false){
-                this.transform.x = canvas.width/2;
-                this.transform.y = canvas.height - canvas.height/6;
+                this.transform.x = 0;
+                this.transform.y = 0 + logicalHeight/2 - logicalHeight/6;
             }
             
         }
