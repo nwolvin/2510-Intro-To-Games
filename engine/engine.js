@@ -9,13 +9,12 @@ import "./EngineClasses/Cookie.js"
 import "./EngineClasses/Star.js"
 
 class EngineGlobals{
-    static requestedAspectRatio = 16/9;
+    static requestedAspectRatio = 16 / 9;
     static logicalWidth = 1440;
     static logicalHeight = EngineGlobals.logicalWidth/EngineGlobals.requestedAspectRatio;
 }
 
 window.EngineGlobals = EngineGlobals;
-
 //Handle favicon
 const link = document.createElement("link");
 link.href = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🎖️%3C/text%3E%3C/svg%3E";
@@ -178,7 +177,6 @@ function engineDraw() {
     else {
         let desiredWidth = canvas.height * EngineGlobals.requestedAspectRatio
         let amount = (canvas.width - desiredWidth) / 2;
-        console.log(desiredWidth);
         zeroX = amount;
         ctx.fillStyle = letterboxColor
         ctx.fillRect(0, 0, amount, canvas.height);

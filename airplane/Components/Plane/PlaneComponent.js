@@ -6,16 +6,16 @@ class PlaneComponent extends Component {
     }
     update() {
         //Keyboard Movement
-        if(Input.keysDown["ArrowRight"] || Input.keysDown["d"]){
+        if(Input.keysDown["ArrowRight"] || Input.keysDown["d"] && this.transform.x < 0 + EngineGlobals.logicalWidth/2){
             this.transform.x +=12*30*Time.deltaTime;
         }
-        if(Input.keysDown["ArrowLeft"] || Input.keysDown["a"]){
+        if(Input.keysDown["ArrowLeft"] || Input.keysDown["a"] && this.transform.x > 0 - EngineGlobals.logicalWidth/2){
             this.transform.x -=12*30*Time.deltaTime;
         }
-        if(Input.keysDown["ArrowUp"] || Input.keysDown["w"]){
+        if(Input.keysDown["ArrowUp"] || Input.keysDown["w"] && this.transform.y > 0 - EngineGlobals.logicalHeight/2){
             this.transform.y -=12*30*Time.deltaTime;
         }
-        if(Input.keysDown["ArrowDown"] || Input.keysDown["s"]){
+        if(Input.keysDown["ArrowDown"] || Input.keysDown["s"] && this.transform.y < 0 + EngineGlobals.logicalHeight/2){
             this.transform.y +=12*30*Time.deltaTime;
         }  
 
@@ -24,15 +24,6 @@ class PlaneComponent extends Component {
         } else {
             this.invincibleFlag = false;
         }
-       
-        
-        //Mouse Movement
-      /*
-        this.transform.x = mouseLocation.mouseX;
-        this.transform.y = mouseLocation.mouseY;
-*/
-
-
     }
 
     handleUpdate(component, eventName){

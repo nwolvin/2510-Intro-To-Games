@@ -4,7 +4,6 @@ class ShootController extends Component {
       this.flagReset = Math.ceil(Time.fpsTarget/6);
     }
     update(){
-      console.log(Input)
       if(this.shootIntervalTime == this.flagReset){
         if(Input.mouseDown || Input.keysDown[" "]){
           shoot();

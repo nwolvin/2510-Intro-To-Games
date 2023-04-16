@@ -6,6 +6,8 @@ class TargetComponent extends Component {
         this.directionTime = 0;
         this.drawTime = 0; 
         this.startDraw = false; 
+        this.xSpeed = Math.floor(Math.random() * 40) + 15
+        this.directionTime = Math.ceil(Time.fpsTarget/3 + Math.floor(Math.random() * (Time.fpsTarget*5/3)));
     }
     update() {
         if( this.drawTime == 10){
@@ -13,10 +15,10 @@ class TargetComponent extends Component {
         } else {
             this.drawTime++;
         }
-        
+
         if( this.directionTime == 0){
             this.direction = (Math.floor(Math.random() * 2)); 
-            this.directionTime = 10 + Math.floor(Math.random() * 50)/Time.deltaTime; 
+            this.directionTime = Math.ceil(Time.fpsTarget/3 + Math.floor(Math.random() * (Time.fpsTarget*5/3))); 
         } else {
             this.directionTime--
         }
@@ -26,9 +28,9 @@ class TargetComponent extends Component {
         } else {
             this.transform.y +=150*Time.deltaTime;
             if(this.direction == 0) {
-                this.transform.x +=30*Time.deltaTime;
+                this.transform.x +=this.xSpeed*Time.deltaTime;
             } else {
-                this.transform.x -=1*Time.deltaTime;
+                this.transform.x -=this.xSpeed*Time.deltaTime;
             }
         }
     }

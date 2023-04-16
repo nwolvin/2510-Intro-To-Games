@@ -80,11 +80,14 @@ class Input{
     
         canvas.addEventListener("touchmove", (e) => { 
           for(let touchEvent of e.touches){
-            console.log(touchEvent.clientX + ", " + touchEvent.clientX);
           }
           e.preventDefault(); 
         })
-    
+
+        //Prevents Context menu
+        document.getElementsByTagName("html")[0].addEventListener("contextmenu", (e)=>{
+          e.preventDefault();
+        })
       }
 }
 
