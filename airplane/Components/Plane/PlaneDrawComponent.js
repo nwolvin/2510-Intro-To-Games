@@ -2,7 +2,7 @@ class PlaneDrawComponent extends Component {
     draw(ctx) {
         if(GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController").invincibleFlag && this.parent.name == "plane")
         {  
-            if( this.canShowCounter == 5){
+            if( this.canShowCounter == Time.fpsTarget/6){
                 this.canDrawFlag =  !this.canDrawFlag
                 this.canShowCounter = 0
             } else {
@@ -114,7 +114,7 @@ class PlaneDrawComponent extends Component {
             ctx.stroke()
             ctx.fill()
             ctx.fillStyle="white"
-            drawStar(this.transform.x-95*this.parent.planeScale*this.rotate, this.transform.y-44*this.parent.planeScale*this.rotate, 9*this.parent.planeScale*this.rotate)  
+            Star.drawStar(this.transform.x-95*this.parent.planeScale*this.rotate, this.transform.y-44*this.parent.planeScale*this.rotate, 9*this.parent.planeScale*this.rotate,ctx)  
     
             //Cockpit
             ctx.beginPath()

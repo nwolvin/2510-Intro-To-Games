@@ -1,5 +1,5 @@
 class ScoreDrawComponent extends Component {  
-    draw(ctx){
+    drawGUI(ctx){
         this.text = GameObject.getObjectByName("scoreGameObject").getComponent("scoreTextController").score;
         ctx.textAlign = this.parent.textAlign;
         ctx.fillStyle = this.parent.fillStyle;

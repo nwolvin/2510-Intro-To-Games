@@ -6,17 +6,17 @@ class PlaneComponent extends Component {
     }
     update() {
         //Keyboard Movement
-        if(keysDown["ArrowRight"] || keysDown["d"]){
-            this.transform.x +=12
+        if(Input.keysDown["ArrowRight"] || Input.keysDown["d"]){
+            this.transform.x +=12*30*Time.deltaTime;
         }
-        if(keysDown["ArrowLeft"] || keysDown["a"]){
-            this.transform.x -=12
+        if(Input.keysDown["ArrowLeft"] || Input.keysDown["a"]){
+            this.transform.x -=12*30*Time.deltaTime;
         }
-        if(keysDown["ArrowUp"] || keysDown["w"]){
-            this.transform.y -=12
+        if(Input.keysDown["ArrowUp"] || Input.keysDown["w"]){
+            this.transform.y -=12*30*Time.deltaTime;
         }
-        if(keysDown["ArrowDown"] || keysDown["s"]){
-            this.transform.y +=12
+        if(Input.keysDown["ArrowDown"] || Input.keysDown["s"]){
+            this.transform.y +=12*30*Time.deltaTime;
         }  
 
         if(GameObject.getObjectByName("playerLifeGameObject") && GameObject.getObjectByName("playerLifeGameObject").getComponent("playerLifeController")){

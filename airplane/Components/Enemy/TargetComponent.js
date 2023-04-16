@@ -16,7 +16,7 @@ class TargetComponent extends Component {
         
         if( this.directionTime == 0){
             this.direction = (Math.floor(Math.random() * 2)); 
-            this.directionTime = 10 + Math.floor(Math.random() * 50)
+            this.directionTime = 10 + Math.floor(Math.random() * 50)/Time.deltaTime; 
         } else {
             this.directionTime--
         }
@@ -24,11 +24,11 @@ class TargetComponent extends Component {
         if(this.transform.y > 2000) {
           this.parent.destroy()
         } else {
-            this.transform.y +=5;
+            this.transform.y +=150*Time.deltaTime;
             if(this.direction == 0) {
-                this.transform.x +=1;
+                this.transform.x +=30*Time.deltaTime;
             } else {
-                this.transform.x -=1;
+                this.transform.x -=1*Time.deltaTime;
             }
         }
     }

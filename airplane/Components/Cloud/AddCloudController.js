@@ -14,7 +14,7 @@ class AddCloudController extends Component {
         GameObject.instantiate(cloud2)
     }
     update(){  
-        if( this.i == 90){
+        if( this.i == Time.fpsTarget*3){
             let cloudGameObject = new CloudGameObject()
             cloudGameObject.layer = 1; 
 

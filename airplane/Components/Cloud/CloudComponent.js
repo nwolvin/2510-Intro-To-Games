@@ -15,7 +15,7 @@ class CloudComponent extends Component {
         if(this.transform.y > 2000) {
             this.parent.destroy()
         } else {
-            this.transform.y +=2;
+            this.transform.y +=60*Time.deltaTime;
         }
     }
 }

@@ -1,5 +1,5 @@
 class TextBoxTextComponent extends Component {
-    draw(ctx){
+    drawGUI(ctx){
 
         if(this.canDrawFlag == undefined){
             this.canDrawFlag = true;
@@ -10,10 +10,10 @@ class TextBoxTextComponent extends Component {
         
         if(this.parent.blink) {
              
-            if( this.canShowCounter == 15 && !this.canDrawFlag){ //Time blink is not shown
+            if( (this.canShowCounter == Math.ceil(Time.fpsTarget/2)) && !this.canDrawFlag){ //Time blink is not shown
                 this.canDrawFlag =  !this.canDrawFlag
                 this.canShowCounter = 0
-            } else if (this.canShowCounter == 30 && this.canDrawFlag) { //Time blink is shown
+            } else if (this.canShowCounter == Time.fpsTarget && this.canDrawFlag) { //Time blink is shown
                 this.canDrawFlag =  !this.canDrawFlag
                 this.canShowCounter = 0
             }

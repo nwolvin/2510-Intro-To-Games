@@ -1,5 +1,5 @@
 class HighScoreDrawComponent extends Component {  
-    draw(ctx){
+    drawGUI(ctx){
         this.text = GameObject.getObjectByName("scoreGameObject").getComponent("scoreTextController").highScore;
         ctx.textAlign = this.parent.textAlign;
         ctx.fillStyle = this.parent.hsFillStyle;

@@ -3,10 +3,8 @@ class PlanePropellerController extends Component {
         this.propeller = true; 
     }
     update(){
-        if(this.propeller) {
-            this.propeller = false; 
-        } else {
-            this.propeller = true; 
+        if(Time.frameCount % Time.fpsTarget/30 == 0){
+            this.propeller = !this.propeller;
         }
     }
 }

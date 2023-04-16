@@ -1,5 +1,5 @@
 class TextComponent extends Component {
-    draw(ctx){
+    drawGUI(ctx){
         ctx.textAlign = this.parent.textAlign;
         ctx.fillStyle = this.parent.fillStyle;
         ctx.font = this.parent.font

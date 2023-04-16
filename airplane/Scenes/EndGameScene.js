@@ -25,34 +25,35 @@ class EndGameScene extends Scene {
 
         
 
-        if(getCookie("score")) {
-            prevScore = getCookie("score");         
+        if(Cookie.getCookie("score")) {
+            prevScore = Cookie.getCookie("score");         
         } else {
             prevScore = 0;
         } 
 
-        let score1 =new ScoreGameObject("#121212", "#121212", 0-3, 0 - canvas.height/40
+        let score1 =new ScoreGameObject("#121212", "#121212", EngineGlobals.logicalWidth/2-3, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score1.name = "scoreGameObject";
-        let score2 =new ScoreGameObject("#121212", "#121212", 0+3, 0 - canvas.height/40
+        let score2 =new ScoreGameObject("#121212", "#121212", EngineGlobals.logicalWidth/2+3, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score2.name = "scoreGameObject";
-        let score3 =new ScoreGameObject("#121212", "#121212", 0, 0 - canvas.height/40-3
+        let score3 =new ScoreGameObject("#121212", "#121212", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40-3
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score3.name = "scoreGameObject";
-        let score4 =new ScoreGameObject("#121212", "#121212", 0, 0 - canvas.height/40+3
+        let score4 =new ScoreGameObject("#121212", "#121212", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40+3
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score4.name = "scoreGameObject";
-        let score5 =new ScoreGameObject("white", "yellow",0, 0 - canvas.height/40
+        let score5 =new ScoreGameObject("white", "yellow", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score5.name = "scoreGameObject";
 
-        let enterTextBox = new TextBoxGameObject("green", "white", 0, 0+canvas.height/16, 70, "RETRY", true, prevScore);
-        let title1 =new TextGameObject("#121212", 0, 0 - canvas.height/6 -3, "Game Over", "center", "40pt Trebuchet MS");
-        let title2 =new TextGameObject("#121212", 0, 0 - canvas.height/6 + 3, "Game Over", "center", "40pt Trebuchet MS");
-        let title3 =new TextGameObject("#121212", 0 - 3, 0 - canvas.height/6, "Game Over", "center", "40pt Trebuchet MS");
-        let title4 =new TextGameObject("#121212", 0 + 3, 0 - canvas.height/6, "Game Over", "center", "40pt Trebuchet MS");
-        let title5 =new TextGameObject("white", 0, 0 - canvas.height/6, "Game Over", "center", "40pt Trebuchet MS");
+        let enterTextBox = new TextBoxGameObject("green", "white", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2+EngineGlobals.logicalHeight/16, 70, "RETRY", true, prevScore);
+       
+        let title1 =new TextGameObject("#121212", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6 -3, "Game Over", "center", "40pt Trebuchet MS");
+        let title2 =new TextGameObject("#121212", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6 + 3, "Game Over", "center", "40pt Trebuchet MS");
+        let title3 =new TextGameObject("#121212", EngineGlobals.logicalWidth/2 - 3, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6, "Game Over", "center", "40pt Trebuchet MS");
+        let title4 =new TextGameObject("#121212", EngineGlobals.logicalWidth/2 + 3, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6, "Game Over", "center", "40pt Trebuchet MS");
+        let title5 =new TextGameObject("white", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6, "Game Over", "center", "40pt Trebuchet MS");
         enterTextBox.name = "enterTextBox";
         title1.name = "title";
         //GameObject.instantiate(score)

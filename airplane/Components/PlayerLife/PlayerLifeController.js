@@ -25,7 +25,7 @@ class PlayerLifeController extends Component {
     }
     update() {
         if(this.invincibleFlag == true){
-            if( this.invincibleCounter == 90){
+            if( this.invincibleCounter == Time.fpsTarget*3){
                 this.invincibleFlag = false; 
                 this.invincibleCounter = 0
             } else {

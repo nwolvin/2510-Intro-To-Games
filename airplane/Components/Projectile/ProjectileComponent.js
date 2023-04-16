@@ -9,7 +9,7 @@ class ProjectileComponent extends Component {
         if(this.transform.y > 0 + EngineGlobals.logicalHeight/2 || this.transform.y < 0 - EngineGlobals.logicalHeight/2) {
            this.parent.destroy()
         } else {
-            this.transform.y -= 10*this.rotate;
+            this.transform.y -= 300*this.rotate*Time.deltaTime;
         }  
     }
 

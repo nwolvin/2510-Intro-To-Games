@@ -1,14 +1,12 @@
 class ShootController extends Component {
     start(){
       this.shootIntervalTime = 0;
+      this.flagReset = Math.ceil(Time.fpsTarget/6);
     }
     update(){
-     /* if(getMouseUpFlag() == true || getKeysUp() == ' '){
-        shoot();
-      } */
-
-      if(this.shootIntervalTime == 5){
-        if(getMouseDownFlag() || keysDown[" "]){
+      console.log(Input)
+      if(this.shootIntervalTime == this.flagReset){
+        if(Input.mouseDown || Input.keysDown[" "]){
           shoot();
         }
         this.shootIntervalTime = 0;

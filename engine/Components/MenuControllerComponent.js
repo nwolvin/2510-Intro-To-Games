@@ -3,7 +3,7 @@ class MenuControllerComponent extends Component {
         
     }
     update(){
-        if(keysDown.Enter){
+        if(Input.keysDown.Enter){
             SceneManager.changeScene(1);
         }
     }

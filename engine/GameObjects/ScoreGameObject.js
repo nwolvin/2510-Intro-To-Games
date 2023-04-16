@@ -12,8 +12,8 @@ class ScoreGameObject extends GameObject {
         this.score = defScore; 
     }
     start(){       
-        if(getCookie("highScore") !== "") {
-            this.highScore = getCookie("highScore");
+        if(Cookie.getCookie("highScore") !== "") {
+            this.highScore = Cookie.getCookie("highScore");
         } else {
             this.highScore = 0;
         } 

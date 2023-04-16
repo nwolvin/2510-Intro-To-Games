@@ -3,12 +3,13 @@ class EnemyShootController extends Component {
       this.shootIntervalTime = 0;
       this.transform.x = this.parent.getComponent("target").transform.x
       this.transform.y = this.parent.getComponent("target").transform.y
-      this.waitToFireIntervalTime =50;
+      this.waitToFireIntervalTime =Math.ceil(Time.fpsTarget*5/3);
       this.canFireFlag = false;
+      this.flagReset = Math.ceil(Time.fpsTarget/6);
     }
     update(){
       
-      if(this.waitToFireIntervalTime == 50) {
+      if(this.waitToFireIntervalTime == Math.ceil(Time.fpsTarget*5/3)) {
         
         this.canFireFlag = !this.canFireFlag;
         this.waitToFireIntervalTime = 0;
@@ -16,7 +17,7 @@ class EnemyShootController extends Component {
         this.waitToFireIntervalTime++;
       }
       
-      if( this.shootIntervalTime == 8){
+      if( this.shootIntervalTime == this.flagReset){
         if(this.canFireFlag) {
           let leftProjectile = new ProjectileGameObject();
           leftProjectile.name = "enemyProjectile";
