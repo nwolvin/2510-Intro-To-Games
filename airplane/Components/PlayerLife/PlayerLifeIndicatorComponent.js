@@ -1,8 +1,8 @@
 class PlayerLifeIndicatorComponent extends Component {
     start() {
         //this.transform.sx = 1/5
-        this.transform.x =  0 - logicalWidth/2 + logicalWidth/34 + (logicalWidth/26 * this.idx);
-        this.transform.y = 0 + logicalHeight/2 - logicalWidth/40
+        this.transform.x =  0 - EngineGlobals.logicalWidth/2 + EngineGlobals.logicalWidth/34 + (EngineGlobals.logicalWidth/26 * this.idx);
+        this.transform.y = 0 + EngineGlobals.logicalHeight/2 - EngineGlobals.logicalWidth/40
     }
     update() {
     }

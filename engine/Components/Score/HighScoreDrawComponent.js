@@ -4,7 +4,7 @@ class HighScoreDrawComponent extends Component {
         ctx.textAlign = this.parent.textAlign;
         ctx.fillStyle = this.parent.hsFillStyle;
         ctx.font = this.parent.font
-        ctx.fillText(this.text, this.transform.x , this.transform.y- logicalHeight/20);
+        ctx.fillText(this.text, this.transform.x , this.transform.y- EngineGlobals.logicalHeight/20);
     }
 }
 

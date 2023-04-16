@@ -12,19 +12,19 @@ class MainScene extends Scene {
         playerLifeGameObject.addComponent(playerLifeController)
 
         setCookie("score", 0)
-        let score1 =new ScoreGameObject("#121212", "#121212",0 + logicalWidth/2 - logicalWidth/100 -3, 0 + logicalHeight/2 - logicalHeight/40
+        let score1 =new ScoreGameObject("#121212", "#121212",0 + EngineGlobals.logicalWidth/2 - EngineGlobals.logicalWidth/100 -3, 0 + EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40
         , "right", "30pt Trebuchet MS", true, true, 0);
         score1.name = "scoreGameObject";
-        let score2 =new ScoreGameObject("#121212", "#121212", 0 + logicalWidth/2 - logicalWidth/100+ 3, 0 + logicalHeight/2 - logicalHeight/40 
+        let score2 =new ScoreGameObject("#121212", "#121212", 0 + EngineGlobals.logicalWidth/2 - EngineGlobals.logicalWidth/100+ 3, 0 + EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40 
         , "right", "30pt Trebuchet MS", true, true, 0);
         score2.name = "scoreGameObject";
-        let score3 =new ScoreGameObject("#121212", "#121212", 0 + logicalWidth/2 - logicalWidth/100, 0 + logicalHeight/2 - logicalHeight/40 -3
+        let score3 =new ScoreGameObject("#121212", "#121212", 0 + EngineGlobals.logicalWidth/2 - EngineGlobals.logicalWidth/100, 0 + EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40 -3
         , "right", "30pt Trebuchet MS", true, true, 0);
         score3.name = "scoreGameObject";
-        let score4 =new ScoreGameObject("#121212", "#121212", 0 + logicalWidth/2 - logicalWidth/100, 0 + logicalHeight/2 - logicalHeight/40 +3
+        let score4 =new ScoreGameObject("#121212", "#121212", 0 + EngineGlobals.logicalWidth/2 - EngineGlobals.logicalWidth/100, 0 + EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40 +3
         , "right", "30pt Trebuchet MS", true, true, 0);
         score4.name = "scoreGameObject";
-        let score5 =new ScoreGameObject("white", "yellow",0 + logicalWidth/2 - logicalWidth/100, 0 + logicalHeight/2 - logicalHeight/40
+        let score5 =new ScoreGameObject("white", "yellow",0 + EngineGlobals.logicalWidth/2 - EngineGlobals.logicalWidth/100, 0 + EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/40
         , "right", "30pt Trebuchet MS", true, true, 0);
         score5.name = "scoreGameObject";
 

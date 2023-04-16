@@ -4,6 +4,13 @@ import "./EngineClasses/Scene.js"
 import "./EngineClasses/GameObject.js"
 import "./EngineClasses/Transform.js"
 
+class EngineGlobals{
+    static requestedAspectRatio = 16/9;
+    static logicalWidth = 1440;
+    static logicalHeight = EngineGlobals.logicalWidth/EngineGlobals.requestedAspectRatio;
+}
+
+window.EngineGlobals = EngineGlobals;
 
 //Handle favicon
 const link = document.createElement("link");
@@ -27,6 +34,7 @@ let mouseDownFlag = false;
 let mouseUpFlag = false; 
 let nextGameObjectId = 0; 
 let mouseLocation = {mouseX, mouseY}
+let letterboxColor = "gray"
 
 //Not the strings has to be all lowercase, e.g. keydown not keyDown or KeyDown
 document.addEventListener("keydown", keyDown)
@@ -150,11 +158,6 @@ function engineUpdate() {
     keysUp = null; 
 }
 
-let requestedAspectRatio = 16/9 ; 
-let logicalWidth = 1440; 
-let letterboxColor = "gray"
-
-
 function engineDraw() {
 
     ctx.fillStyle = Camera.main.fillStyle;
@@ -163,13 +166,13 @@ function engineDraw() {
     let offsetX = 0;
     let offsetY = 0;
     let browserWidth = canvas.width
-    if (requestedAspectRatio > browserAspectRatio) {
-        let desiredHeight = canvas.width / requestedAspectRatio;
+    if (EngineGlobals.requestedAspectRatio > browserAspectRatio) {
+        let desiredHeight = canvas.width / EngineGlobals.requestedAspectRatio;
         let amount = (canvas.height - desiredHeight) / 2;
         offsetY = amount;
     }
     else {
-        let desiredWidth = canvas.height * requestedAspectRatio
+        let desiredWidth = canvas.height * EngineGlobals.requestedAspectRatio
         let amount = (canvas.width - desiredWidth) / 2;
         offsetX = amount
         browserWidth -= 2 * amount
@@ -180,7 +183,7 @@ function engineDraw() {
     let scene = SceneManager.getActiveScene()
 
     ctx.save();
-    let logicalScaling = browserWidth / logicalWidth
+    let logicalScaling = browserWidth / EngineGlobals.logicalWidth
     ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2)
     ctx.scale(logicalScaling, logicalScaling)
 
@@ -209,15 +212,15 @@ function engineDraw() {
 
     ctx.restore();
 
-    if (requestedAspectRatio > browserAspectRatio) {
-        let desiredHeight = canvas.width / requestedAspectRatio;
+    if (EngineGlobals.requestedAspectRatio > browserAspectRatio) {
+        let desiredHeight = canvas.width / EngineGlobals.requestedAspectRatio;
         let amount = (canvas.height - desiredHeight) / 2;
         ctx.fillStyle = letterboxColor
         ctx.fillRect(0, 0, canvas.width, amount);
         ctx.fillRect(0, canvas.height - amount, canvas.width, amount);
     }
     else {
-        let desiredWidth = canvas.height * requestedAspectRatio
+        let desiredWidth = canvas.height * EngineGlobals.requestedAspectRatio
         let amount = (canvas.width - desiredWidth) / 2;
         ctx.fillStyle = letterboxColor
         ctx.fillRect(0, 0, amount, canvas.height);
@@ -252,9 +255,9 @@ function start(title, settings ={}){
     
     document.title = title
     if (settings) {
-        requestedAspectRatio = settings.aspectRatio ? settings.aspectRatio : 16 / 9
+        EngineGlobals.requestedAspectRatio = settings.aspectRatio ? settings.aspectRatio : 16 / 9
         letterboxColor = settings.letterboxColor ? settings.letterboxColor : "black"
-        logicalWidth = settings.logicalWidth ? settings.logicalWidth : 1440
+        EngineGlobals.logicalWidth = settings.logicalWidth ? settings.logicalWidth : 1440
     }
 
     function gameLoop() {
@@ -304,5 +307,6 @@ window.mouseLocation = mouseLocation;
 window.getCookie = getCookie; 
 window.setCookie = setCookie;
 window.canvas = canvas; 
-window.logicalWidth = logicalWidth; 
-window.logicalHeight = logicalWidth * 9 / 16
+// window.logicalWidth = logicalWidth; 
+// window.logicalHeight = logicalWidth * 9 / 16
+
