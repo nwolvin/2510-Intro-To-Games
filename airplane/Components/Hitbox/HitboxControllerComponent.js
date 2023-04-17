@@ -26,7 +26,7 @@ class HitboxControllerComponent extends Component {
                 let px = projectile.getComponent("projectile").transform.x
                 let py = projectile.getComponent("projectile").transform.y
                 
-                if(px > 0 - EngineGlobals.logicalWidth/2 && px < EngineGlobals.logicalWidth && py > 0 - EngineGlobals.logicalHeight/2 && py < EngineGlobals.logicalHeight && !this.parent.markedForDestroy){
+                if(!this.parent.markedForDestroy){
                     if(px < this.x1 && px > this.x2 && py < this.y1 && py > this.y2) {
                         this.updateListeners("TargetHit")
                         this.parent.markedForDestroy = true
@@ -41,13 +41,9 @@ class HitboxControllerComponent extends Component {
             for(let projectile of enemyProjectiles) {
                 let px = projectile.getComponent("projectile").transform.x
                 let py = projectile.getComponent("projectile").transform.y
-                if(px > 0 - EngineGlobals.logicalWidth/2 && px < EngineGlobals.logicalWidth && py > 0 - EngineGlobals.logicalHeight/2 && py < EngineGlobals.logicalHeight){
                     if(px > this.x1 && px < this.x2 && py > this.y1 && py < this.y2) {
                         this.updateListeners("PlayerHit")
-                    } 
-                }
-
-                
+                    }   
             }  
         }
     }

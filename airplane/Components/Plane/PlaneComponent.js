@@ -6,16 +6,16 @@ class PlaneComponent extends Component {
     }
     update() {
         //Keyboard Movement
-        if(Input.keysDown["ArrowRight"] || Input.keysDown["d"] && this.transform.x < 0 + EngineGlobals.logicalWidth/2){
+        if(Input.keysDown["ArrowRight"] || Input.keysDown["d"]){
             this.transform.x +=12*30*Time.deltaTime;
         }
-        if(Input.keysDown["ArrowLeft"] || Input.keysDown["a"] && this.transform.x > 0 - EngineGlobals.logicalWidth/2){
+        if(Input.keysDown["ArrowLeft"] || Input.keysDown["a"]){
             this.transform.x -=12*30*Time.deltaTime;
         }
-        if(Input.keysDown["ArrowUp"] || Input.keysDown["w"] && this.transform.y > 0 - EngineGlobals.logicalHeight/2){
+        if(Input.keysDown["ArrowUp"] || Input.keysDown["w"]){
             this.transform.y -=12*30*Time.deltaTime;
         }
-        if(Input.keysDown["ArrowDown"] || Input.keysDown["s"] && this.transform.y < 0 + EngineGlobals.logicalHeight/2){
+        if(Input.keysDown["ArrowDown"] || Input.keysDown["s"]){
             this.transform.y +=12*30*Time.deltaTime;
         }  
 

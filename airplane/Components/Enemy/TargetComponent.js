@@ -1,7 +1,7 @@
 class TargetComponent extends Component {
     start() {
-        this.transform.x = 0 - EngineGlobals.logicalWidth/2 + EngineGlobals.logicalWidth*1/6+(Math.floor(Math.random() * (EngineGlobals.logicalWidth*2/3))); 
-        this.transform.y = 0 - EngineGlobals.logicalHeight
+        this.transform.x = Camera.main.transform.x - EngineGlobals.logicalWidth/2 + EngineGlobals.logicalWidth*1/6+(Math.floor(Math.random() * (EngineGlobals.logicalWidth*2/3))); 
+        this.transform.y = Camera.main.transform.y - EngineGlobals.logicalHeight
         this.direction = (Math.floor(Math.random() * 2)); 
         this.directionTime = 0;
         this.drawTime = 0; 

@@ -3,11 +3,17 @@ class ProjectileComponent extends Component {
         this.transform.x = this.parent.x
         this.transform.y = this.parent.y
         this.rotate = this.parent.rotate
-        //this.transform.sx = GameObject.getObjectByName("plane").getComponent("planeComponent").transform.sx;
+        
     }
     update() {
-        if(this.transform.y > 0 + EngineGlobals.logicalHeight/2 || this.transform.y < 0 - EngineGlobals.logicalHeight/2) {
-           this.parent.destroy()
+        let plane = GameObject.getObjectByName("plane").getComponent("planeComponent");
+        console.log(plane.transform.y)
+        if(this.transform.y > plane.transform.y + EngineGlobals.logicalHeight || this.transform.y < plane.transform.y - EngineGlobals.logicalHeight) {
+           
+           console.log("DESTROY")
+           
+           
+            this.parent.destroy()
         } else {
             this.transform.y -= 300*this.rotate*Time.deltaTime;
         }  

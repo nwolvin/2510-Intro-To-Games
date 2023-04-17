@@ -9,7 +9,7 @@
  */
 class Time{
     /** The time in seconds between frames */
-    static fpsTarget = 60
+    static fpsTarget = 30
     static deltaTime = 1/Time.fpsTarget
 
     static time = 0

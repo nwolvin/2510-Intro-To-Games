@@ -30,7 +30,7 @@ class MainScene extends Scene {
 
 
         GameObject.instantiate(playerLifeGameObject);  
-        let backGroundGameObject  = new GameObject().addComponent(new DrawBackground());
+        let backGroundGameObject  = new GameObject().addComponent(new CameraFollowingBackground());
         backGroundGameObject.layer = -1;
         GameObject.instantiate(backGroundGameObject);
         GameObject.instantiate(new GameObject().addComponent(new AddCloudController()))
@@ -44,7 +44,7 @@ class MainScene extends Scene {
         GameObject.instantiate(score4)
         GameObject.instantiate(score5)
 
-        Camera.main.parent.addComponent(new CenteredCameraComponent());
+        Camera.main.parent.addComponent(new PlaneFollowingCameraComponent());
     }
 }
 
