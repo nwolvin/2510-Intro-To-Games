@@ -1,13 +1,14 @@
 class TargetComponent extends Component {
     start() {
-        this.transform.x = 0 - EngineGlobals.logicalWidth/2 + EngineGlobals.logicalWidth*1/6+(Math.floor(Math.random() * (EngineGlobals.logicalWidth*2/3))); 
-        this.transform.y = 0 - EngineGlobals.logicalHeight
+        this.transform.x = Camera.main.transform.x - EngineGlobals.logicalWidth/2 + EngineGlobals.logicalWidth*1/6+(Math.floor(Math.random() * (EngineGlobals.logicalWidth*2/3))); 
+        this.transform.y = Camera.main.transform.y - EngineGlobals.logicalHeight
         this.direction = (Math.floor(Math.random() * 2)); 
         this.directionTime = 0;
         this.drawTime = 0; 
         this.startDraw = false; 
         this.xSpeed = Math.floor(Math.random() * 40) + 15
         this.directionTime = Math.ceil(Time.fpsTarget/3 + Math.floor(Math.random() * (Time.fpsTarget*5/3)));
+        this.hitflag = true
     }
     update() {
         if( this.drawTime == 10){
@@ -23,8 +24,11 @@ class TargetComponent extends Component {
             this.directionTime--
         }
         
-        if(this.transform.y > 2000) {
-          this.parent.destroy()
+        if((Math.abs(this.transform.y - Camera.main.transform.y)>EngineGlobals.logicalHeight*5/3) && this.hitflag){
+            this.hitflag = false
+            console.log("TARGET DESTROY")
+            this.parent.destroy()
+         
         } else {
             this.transform.y +=150*Time.deltaTime;
             if(this.direction == 0) {

@@ -3,7 +3,7 @@ class TitleScene extends Scene {
     start(){
         GameObject.instantiate(new GameObject().addComponent(new MenuControllerComponent()));
         
-        let backGroundGameObject  = new GameObject().addComponent(new DrawBackground());
+        let backGroundGameObject  = new GameObject().addComponent(new CameraFollowingBackground());
         backGroundGameObject.layer = -1;
         GameObject.instantiate(backGroundGameObject);
        
@@ -61,7 +61,7 @@ class TitleScene extends Scene {
         GameObject.instantiate(score4)
         GameObject.instantiate(score5)
 
-        Camera.main.parent.addComponent(new CenteredCameraComponent());
+        // Camera.main.parent.addComponent(new PlaneFollowingCameraComponent());
     }
 }
 

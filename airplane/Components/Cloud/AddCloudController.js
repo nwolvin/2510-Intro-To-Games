@@ -12,17 +12,20 @@ class AddCloudController extends Component {
 
         GameObject.instantiate(cloud1)
         GameObject.instantiate(cloud2)
+        this.addCloudCounter = 0; 
     }
     update(){  
-        if( this.i == Time.fpsTarget*3){
-            let cloudGameObject = new CloudGameObject()
-            cloudGameObject.layer = 1; 
+        if( this.addCloudCounter == 0){
+            let cloud = new CloudGameObject(); 
+            cloud.name = "cloud"
+            GameObject.instantiate(cloud);
+            this.addCloudCounter = (Math.floor(Math.random() * (5/3*Time.fpsTarget))); ;
 
-            GameObject.instantiate(cloudGameObject)
-            this.i = 0
-        } else {
-            this.i++;
-        }
+          } else {
+            this.addCloudCounter--;
+          }
+     
+    
     }
   }
 window.AddCloudController=AddCloudController

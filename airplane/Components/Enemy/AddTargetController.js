@@ -8,7 +8,7 @@ class AddTargetController extends Component {
         let target = new TargetGameObject(); 
         target.name = "target"
         GameObject.instantiate(target);
-        this.addPlaneCounter = this.direction = (Math.floor(Math.random() * (5/3*Time.fpsTarget))); ;
+        this.addPlaneCounter = (Math.floor(Math.random() * (5/3*Time.fpsTarget)));
       } else {
         this.addPlaneCounter--;
       }
