@@ -22,6 +22,7 @@ import "./Components/PlayerLife/GUIPlaneDrawComponent.js"
 import "./Components/PlaneFollowingCameraComponent.js"
 import "./Components/CameraFollowingBackground.js"
 
+import "../engine/Components/TextBox/TextBoxControllerComponent.js"
 import "../engine/Components/TextBox/TextBoxTextComponent.js"
 import "../engine/Components/TextBox/TextBoxRectangleComponent.js"
 import "../engine/Components/Text/TextComponent.js"
@@ -45,6 +46,12 @@ import "./Scenes/MainScene.js"
 import "./Scenes/TitleScene.js"
 import "./Scenes/EndGameScene.js"
 
+//Handle favicon
+const link = document.createElement("link");
+link.href = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🎖️%3C/text%3E%3C/svg%3E";
+link.rel = "icon";
+document.getElementsByTagName("head")[0].appendChild(link); // for IE6
+
 let defScale = 7/20; 
 
 
@@ -52,7 +59,7 @@ let titleScene = new TitleScene("white")
 let mainScene = new MainScene("white")
 let endGameScene = new EndGameScene("white")
 
-window.allScenes = [titleScene, mainScene, endGameScene];
+window.allAirplaneScenes = [titleScene, mainScene, endGameScene];
 
 window.defScale = defScale
 

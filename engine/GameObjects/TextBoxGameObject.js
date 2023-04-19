@@ -1,5 +1,5 @@
 class TextBoxGameObject extends GameObject {
-    constructor(rectFillStyle = "green", textFillStyle = "white", x, y, height, text, blink) {
+    constructor(rectFillStyle = "green", textFillStyle = "white", x, y, height, text, blink,highlightOnHover) {
         super();
         this.rectFillStyle = rectFillStyle
         this.textFillStyle = textFillStyle;
@@ -8,11 +8,13 @@ class TextBoxGameObject extends GameObject {
         this.height = height; 
         this.text = text; 
         this.blink = blink;
+        this.highlightOnHover = highlightOnHover; 
       }
     
     start(){
         this.font = this.height/3 + "pt Trebuchet MS";
    
+        this.addComponent(new TextBoxControllerComponent());
         this.addComponent(new TextBoxRectangleComponent());
         this.addComponent(new TextBoxTextComponent());
         

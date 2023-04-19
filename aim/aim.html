@@ -5,18 +5,12 @@
     <link href="/engine/engine.css" rel="stylesheet">
 </head>
 
-<style>
-    body {
-        cursor:none;
-    }
-</style>
-
 <body>
     <canvas id="canv"></canvas>
     <script type="module">
         import "/engine/engine.js"
-        import "/airplane/airplane.js"
-        SceneManager.startScenes(allAirplaneScenes, "Airplane Shooter")
+        import "/aim/aim.js"
+        SceneManager.startScenes(allAimScenes, "Aim")
     </script>
 </body>
 

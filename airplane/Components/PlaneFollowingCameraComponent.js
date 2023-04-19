@@ -12,8 +12,8 @@ class PlaneFollowingCameraComponent extends Component{
         let xDif = plane.transform.x- this.transform.x;
         let yDif = (plane.transform.y - EngineGlobals.logicalHeight/3) - this.transform.y
        
-        this.transform.x += .05 * xDif;
-        this.transform.y += .05 * yDif;
+        this.transform.x += .1 * xDif;
+        this.transform.y += .1 * yDif;
     }
 }
 

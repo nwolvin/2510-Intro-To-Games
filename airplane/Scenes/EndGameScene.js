@@ -47,7 +47,7 @@ class EndGameScene extends Scene {
         , "center", "30pt Trebuchet MS", true, true, prevScore);
         score5.name = "scoreGameObject";
 
-        let enterTextBox = new TextBoxGameObject("green", "white", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2+EngineGlobals.logicalHeight/16, 70, "RETRY", true, prevScore);
+        let enterTextBox = new TextBoxGameObject("green", "white", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2+EngineGlobals.logicalHeight/16, 70, "RETRY", true, false);
        
         let title1 =new TextGameObject("#121212", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6 -3, "Game Over", "center", "40pt Trebuchet MS");
         let title2 =new TextGameObject("#121212", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6 + 3, "Game Over", "center", "40pt Trebuchet MS");
