@@ -30,7 +30,7 @@ class TargetGameObject extends GameObject {
         
         this.hitboxes.push(hitbox1)
         this.hitboxes.push(hitbox2)
-        this.addComponent(new AddHitboxesController())
+        this.addComponent(new AddPlaneHitboxesController())
 
         this.addComponent(enemyPlaneDraw)
         this.addComponent(new EnemyShootController());

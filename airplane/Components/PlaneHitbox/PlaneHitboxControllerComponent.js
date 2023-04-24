@@ -1,4 +1,4 @@
-class HitboxControllerComponent extends Component {
+class PlaneHitboxControllerComponent extends Component {
     start() {
        
         this.x1 = this.x1Params; 
@@ -6,8 +6,8 @@ class HitboxControllerComponent extends Component {
         this.x2 = this.x2Params;
         this.y2 = this.y2Params;
         
-        //Draws Hitboxes
-        /*let hitBoxDrawComponent = new HitboxDrawComponent();
+        //Draws PlaneHitboxes
+        /*let hitBoxDrawComponent = new PlaneHitboxDrawComponent();
         hitBoxDrawComponent.idx = this.idx; 
         this.parent.addComponent(hitBoxDrawComponent)*/
 
@@ -49,4 +49,4 @@ class HitboxControllerComponent extends Component {
     }
 }
 
-window.HitboxControllerComponent = HitboxControllerComponent;
+window.PlaneHitboxControllerComponent = PlaneHitboxControllerComponent;

@@ -2,7 +2,7 @@ class MainScene extends Scene {
     start() {
         let plane = new PlaneGameObject();
         plane.name = "plane"; 
-        plane.addComponent(new AddHitboxesController())
+        plane.addComponent(new AddPlaneHitboxesController())
 
         let playerLifeGameObject = new GameObject(); 
         playerLifeGameObject.name = "playerLifeGameObject"

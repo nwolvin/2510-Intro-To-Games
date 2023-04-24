@@ -1,4 +1,4 @@
-class HitboxDrawComponent extends Component {
+class PlaneHitboxDrawComponent extends Component {
     draw(ctx) {    
         let htbx = this.parent.components.find(Component=>Component.idx == this.idx)
         this.x1 = htbx.x1; 
@@ -12,4 +12,4 @@ class HitboxDrawComponent extends Component {
     }
 }
 
-window.HitboxDrawComponent = HitboxDrawComponent;
+window.PlaneHitboxDrawComponent = PlaneHitboxDrawComponent;
