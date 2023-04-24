@@ -10,15 +10,22 @@ import "../engine/Components/Score/ScoreDrawComponent.js"
 import "../engine/Components/Score/HighScoreDrawComponent.js"
 import "../engine/Components/Score/ScoreControllerComponent.js"
 import "../engine/Components/MenuControllerComponent.js"
+import "../engine/Components/Rectangle/RectangleComponent.js"
+import "../engine/Components/Rectangle/RectangleDrawComponent.js"
+
 import "../engine/EngineClasses/Camera.js"
 
 import "../engine/GameObjects/RectangleGameObject.js"
 import "../engine/GameObjects/TextBoxGameObject.js"
 import "../engine/GameObjects/TextGameObject.js"
 import "../engine/GameObjects/ScoreGameObject.js"
+import "../engine/GameObjects/RectangleGameObject.js"
 import "./Scenes/MainScene.js"
 import "./Scenes/TitleScene.js"
 import "./Scenes/EndGameScene.js"
+
+import "./GameObjects/TargetGameObject.js"
+import "./Components/TargetComponent.js"
 
 //Handle favicon
 const link = document.createElement("link");

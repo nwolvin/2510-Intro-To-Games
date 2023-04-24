@@ -26,7 +26,6 @@ class TargetComponent extends Component {
         
         if((Math.abs(this.transform.y - Camera.main.transform.y)>EngineGlobals.logicalHeight*5/3) && this.hitflag){
             this.hitflag = false
-            console.log("TARGET DESTROY")
             this.parent.destroy()
          
         } else {
