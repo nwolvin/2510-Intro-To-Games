@@ -6,7 +6,7 @@ class MainScene extends Scene {
         GameObject.instantiate(drawTimer);
 
         drawTimer.components[0].x = EngineGlobals.logicalWidth/2; 
-        drawTimer.components[0].y = 0;
+        drawTimer.components[0].y = 0+EngineGlobals.logicalWidth/25;
 
         let aimScoreGameObject = new GameObject(); 
         aimScoreGameObject.name = "aimScoreGameObject";

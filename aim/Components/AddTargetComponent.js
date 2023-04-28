@@ -2,7 +2,7 @@ class AddTargetComponent extends Component {
     start() {
         this.addTarget = true; 
         this.targetsAddedCount = 0;
-
+        this.startTime = Time.secondsCount;
     }
     update(){
         if(this.addTarget){
@@ -22,12 +22,15 @@ class AddTargetComponent extends Component {
     handleUpdate(component, eventName){
         if(eventName == "TargetClicked"){
             if(this.targetsAddedCount == 4){
-                console.log("END")
+                Cookie.setCookie("avgReactionTime", Time.getTimeString(GameObject.getObjectByName("aimScoreGameObject").getComponent("aimScoreComponent").avgReactionTime))
+                Cookie.setCookie("totalTime", Time.getTimeString(Time.secondsCount-this.startTime));
+                
                 SceneManager.changeScene(2);
             }else{
                 this.addTarget = true;
             }
         }
     }
+
 }
 window.AddTargetComponent = AddTargetComponent;

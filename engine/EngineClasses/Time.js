@@ -23,7 +23,42 @@ class Time{
       Time.frameCount++;
       Time.secondsCount = Time.frameCount/Time.fpsTarget;
     }
+    static formatTimerString(startTime){
+      let time =  Time.secondsCount - startTime
+      let myArray = String(time).split(".");
+      let second = "";
+
+      if(myArray.length > 1){
+          if(myArray[1].length < 2){
+              second = myArray[1].substring(0,1)+"0";
+          } else {
+              second = myArray[1].substring(0,2);
+          }
+      } else {
+          second = "00"
+      }
+      return myArray[0] + "."+second+"s"
+    } 
+
+    static getTimeString(time){
+      let myArray = String(time).split(".");
+      let second = "";
+
+      if(myArray.length > 1){
+          if(myArray[1].length < 2){
+              second = myArray[1].substring(0,1)+"0";
+          } else {
+              second = myArray[1].substring(0,2);
+          }
+      } else {
+          second = "00"
+      }
+      return myArray[0] + "."+second+"s"
+    } 
   }
+
+  
+  
   
   window.Time = Time
   export default Time;
