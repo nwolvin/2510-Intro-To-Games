@@ -14,6 +14,8 @@ import "../engine/Components/MenuControllerComponent.js"
 import "../engine/Components/Rectangle/RectangleComponent.js"
 import "../engine/Components/Rectangle/RectangleDrawComponent.js"
 
+import "../engine/Components/Timer/TimerDrawComponent.js"
+
 import "../engine/EngineClasses/Camera.js"
 
 import "../engine/GameObjects/RectangleGameObject.js"

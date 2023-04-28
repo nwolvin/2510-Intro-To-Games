@@ -25,15 +25,17 @@ class TextBoxRectangleComponent extends Component {
         } else {
             this.canDrawFlag = true; 
         }
-        
+
+        let measurements = ctx.measureText(this.parent.text);
         if(this.canDrawFlag){
             if(this.parent.highlightOnHover && this.hover){
                 ctx.fillStyle = "white";
-                ctx.fillRect(this.transform.x - this.parent.height*2/2 - 3, this.transform.y - this.parent.height/2 - 3, this.parent.height*2 + 6, this.parent.height+6);
+                ctx.fillRect(this.transform.x-measurements.width * 2 - 3, this.transform.y-6*measurements.actualBoundingBoxAscent - 3, measurements.width * 4 + 6, measurements.actualBoundingBoxAscent * 12 + 6);
+
             }
-            
+          
             ctx.fillStyle = this.parent.rectFillStyle; 
-            ctx.fillRect(this.transform.x - this.parent.height*2/2, this.transform.y - this.parent.height/2, this.parent.height*2, this.parent.height);
+            ctx.fillRect(this.transform.x-measurements.width * 2, this.transform.y-6*measurements.actualBoundingBoxAscent, measurements.width * 4, measurements.actualBoundingBoxAscent * 12);
 
         }
     }

@@ -15,7 +15,6 @@ class TargetComponent extends Component {
         if(mouseX > this.transform.x - this.parent.width/2 && mouseX < this.transform.x + this.parent.width/2 && Input.mouseDown && !this.parent.markedForDestroy){           
             this.updateListeners("TargetClicked")
             targetTimers.push(Time.secondsCount -  this.startTime);
-            console.log(targetTimers)
             this.parent.destroy();
         }
     }
