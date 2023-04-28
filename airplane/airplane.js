@@ -24,6 +24,7 @@ import "./Components/CameraFollowingBackground.js"
 
 import "../engine/Components/TextBox/TextBoxControllerComponent.js"
 import "../engine/Components/TextBox/TextBoxTextComponent.js"
+import "../engine/Components/TextBox/TextBoxCenteredTextComponent.js"
 import "../engine/Components/TextBox/TextBoxRectangleComponent.js"
 import "../engine/Components/Text/TextComponent.js"
 import "../engine/Components/Text/TextControllerComponent.js"

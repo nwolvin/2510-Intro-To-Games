@@ -15,10 +15,13 @@ class Time{
     static time = 0
   
     static frameCount = 0
+
+    static secondsCount = 0
   
     static update(){
       Time.time += Time.deltaTime
       Time.frameCount++;
+      Time.secondsCount = Time.frameCount/Time.fpsTarget;
     }
   }
   

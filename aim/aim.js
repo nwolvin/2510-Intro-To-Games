@@ -2,6 +2,7 @@ import "/engine/engine.js"
 import "../engine/Components/DrawBackground.js"
 
 import "../engine/Components/TextBox/TextBoxTextComponent.js"
+import "../engine/Components/TextBox/TextBoxCenteredTextComponent.js"
 import "../engine/Components/TextBox/TextBoxControllerComponent.js"
 import "../engine/Components/TextBox/TextBoxRectangleComponent.js"
 import "../engine/Components/Text/TextComponent.js"
@@ -26,6 +27,8 @@ import "./Scenes/EndGameScene.js"
 
 import "./GameObjects/TargetGameObject.js"
 import "./Components/TargetComponent.js"
+import "./Components/AddTargetComponent.js"
+import "./Components/AimScoreComponent.js"
 
 //Handle favicon
 const link = document.createElement("link");

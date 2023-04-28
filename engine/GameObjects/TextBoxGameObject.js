@@ -16,7 +16,7 @@ class TextBoxGameObject extends GameObject {
    
         this.addComponent(new TextBoxControllerComponent());
         this.addComponent(new TextBoxRectangleComponent());
-        this.addComponent(new TextBoxTextComponent());
+        this.addComponent(new TextBoxCenteredTextComponent());
         
 
 
