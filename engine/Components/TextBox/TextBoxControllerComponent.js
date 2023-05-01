@@ -14,7 +14,28 @@ class TextBoxControllerComponent extends Component {
     }
 
     if(this.hover && Input.mouseDown){
-      SceneManager.changeScene(1);
+      if(this.parent.name == "enterTextBox"){
+        SceneManager.changeScene(1);
+      } else {
+        deselect();
+        this.parent.selected = true;
+
+        if(this.parent.name == "ten"){
+          Cookie.setCookie("targetNum", 10);
+        }
+        if(this.parent.name == "twentyfive"){
+          Cookie.setCookie("targetNum", 25);
+        }
+        if(this.parent.name == "fifty"){
+          Cookie.setCookie("targetNum", 50);
+        }
+        if(this.parent.name == "home"){
+          SceneManager.changeScene(0);
+        }
+        
+      }
+      
+      
     }
   }
 }

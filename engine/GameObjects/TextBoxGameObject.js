@@ -1,17 +1,18 @@
 class TextBoxGameObject extends GameObject {
-    constructor(rectFillStyle = "green", textFillStyle = "white", x, y, height, text, blink,highlightOnHover) {
+    constructor(rectFillStyle = "green", textFillStyle = "white", x, y, text, blink, highlightOnHover, selected) {
         super();
         this.rectFillStyle = rectFillStyle
         this.textFillStyle = textFillStyle;
         this.x = x; 
         this.y = y;
-        this.height = height; 
         this.text = text; 
         this.blink = blink;
         this.highlightOnHover = highlightOnHover; 
+        this.selected = selected;
       }
     
     start(){
+        this.height = canvas.getContext("2d").measureText(this.text).actualBoundingBoxAscent*10; 
         this.font = this.height/3 + "pt Trebuchet MS";
    
         this.addComponent(new TextBoxControllerComponent());

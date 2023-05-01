@@ -28,10 +28,10 @@ import "./Scenes/TitleScene.js"
 import "./Scenes/EndGameScene.js"
 
 import "./GameObjects/TargetGameObject.js"
-import "./Components/TargetComponent.js"
-import "./Components/AddTargetComponent.js"
-import "./Components/AimScoreComponent.js"
-import "./Components/ScoreTextControllerComponent.js"
+import "./Components/Target/TargetComponent.js"
+import "./Components/Target/AddTargetComponent.js"
+import "./Components/Score/AimScoreComponent.js"
+import "./Components/Score/ScoreTextControllerComponent.js"
 //Handle favicon
 const link = document.createElement("link");
 link.href = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2016%2016'%3E%3Ctext%20x='0'%20y='14'%3E🎯%3C/text%3E%3C/svg%3E";

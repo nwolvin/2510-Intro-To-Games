@@ -1,5 +1,6 @@
 class MainScene extends Scene {
     start() {
+           
         let drawTimer = new GameObject(); 
         drawTimer.name = "drawTimer";
         drawTimer.addComponent(new TimerDrawComponent("40pt Trebuchet MS", "center", "white", Time.secondsCount));
@@ -15,7 +16,7 @@ class MainScene extends Scene {
         
         let addTargetGameObject = new GameObject(); 
         addTargetGameObject.name = "addTargetGameObject";
-        let addTargetComponent = new AddTargetComponent(15); 
+        let addTargetComponent = new AddTargetComponent(Cookie.getCookie("targetNum")); 
         addTargetComponent.name = "addTargetComponent";
         addTargetGameObject.addComponent(addTargetComponent);
         GameObject.instantiate(addTargetGameObject)
@@ -27,7 +28,6 @@ class MainScene extends Scene {
         scoreText.components[0].x = EngineGlobals.logicalWidth - EngineGlobals.logicalWidth/12; 
         scoreText.components[0].y = 0+EngineGlobals.logicalWidth/25;
         scoreText.addComponent(new ScoreTextControllerComponent());
-
 
     }
 }

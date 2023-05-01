@@ -203,9 +203,10 @@ function engineDraw() {
                 }
             }
         }
+        ctx.restore();
     }
 
-    ctx.restore();
+
 }
 
 function start(title, settings ={}){
@@ -230,9 +231,22 @@ function start(title, settings ={}){
 
 }
 
+function deselect(){
+    let scene = SceneManager.getActiveScene()
+    for(let gameObject of scene.gameObjects){
+        if(gameObject.selected){
+            gameObject.selected = false;
+        }
+    }
+}
+
+
+
+
+
 /** Start the game in 'play mode1 */
 window.start = start;
-
+window.deselect = deselect;
 window.getNextGameObjectId = getNextGameObjectId;
 window.addNextGameObjectId = addNextGameObjectId;
 window.canvas = canvas; 
