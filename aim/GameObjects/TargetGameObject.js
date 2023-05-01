@@ -8,13 +8,16 @@ class TargetGameObject extends GameObject {
     start(){
         this.components[0].x = 1000000000;
         this.components[0].y = 1000000000;
-        let addTarget = GameObject.getObjectByName("addTargetGameObject").getComponent("addTargetComponent")
+        let addTarget = GameObject.getObjectByName("addTargetGameObject").getComponent("addTargetComponent");
+        let aimScore = GameObject.getObjectByName("aimScoreGameObject").getComponent("aimScoreComponent");
+
         this.fillStyle = "red";
         this.width = 20; 
         this.height = 20; 
         let targetComponent = new TargetComponent(); 
        targetComponent.name = "target";
        targetComponent.addListener(addTarget); 
+       targetComponent.addListener(aimScore); 
        this.addComponent(targetComponent); 
        this.addComponent(new RectangleDrawComponent()); 
     }

@@ -1,4 +1,9 @@
 class AddTargetComponent extends Component {
+    constructor(targetsCount){
+        super()
+        this.targetsCount = targetsCount;
+    }
+    
     start() {
         this.addTarget = true; 
         this.targetsAddedCount = 0;
@@ -21,7 +26,7 @@ class AddTargetComponent extends Component {
 
     handleUpdate(component, eventName){
         if(eventName == "TargetClicked"){
-            if(this.targetsAddedCount == 4){
+            if(this.targetsAddedCount == this.targetsCount){
                 Cookie.setCookie("avgReactionTime", Time.getTimeString(GameObject.getObjectByName("aimScoreGameObject").getComponent("aimScoreComponent").avgReactionTime))
                 Cookie.setCookie("totalTime", Time.getTimeString(Time.secondsCount-this.startTime));
                 

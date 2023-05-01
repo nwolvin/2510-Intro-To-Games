@@ -3,6 +3,7 @@ class AimScoreComponent extends Component {
         this.name = "aimScoreComponent";
         this.targetTimers = [];
         this.avgReactionTime = 0; 
+        this.hits = 0;
 
     }
     update(){
@@ -16,6 +17,12 @@ class AimScoreComponent extends Component {
                 i++; 
             }
             this.avgReactionTime = sum/this.targetTimers.length;
+        }
+    }
+
+    handleUpdate(component, eventName){
+        if(eventName == "TargetClicked"){
+           this.hits++;
         }
     }
 }

@@ -15,10 +15,19 @@ class MainScene extends Scene {
         
         let addTargetGameObject = new GameObject(); 
         addTargetGameObject.name = "addTargetGameObject";
-        let addTargetComponent = new AddTargetComponent(); 
+        let addTargetComponent = new AddTargetComponent(4); 
         addTargetComponent.name = "addTargetComponent";
         addTargetGameObject.addComponent(addTargetComponent);
         GameObject.instantiate(addTargetGameObject)
+
+
+        let scoreText =new TextGameObject("white", EngineGlobals.logicalWidth/2, EngineGlobals.logicalHeight/2 - EngineGlobals.logicalHeight/6, "0/"+addTargetComponent.targetsCount, "center", "30pt Trebuchet MS");
+
+        GameObject.instantiate(scoreText)
+        scoreText.components[0].x = EngineGlobals.logicalWidth - EngineGlobals.logicalWidth/12; 
+        scoreText.components[0].y = 0+EngineGlobals.logicalWidth/25;
+        scoreText.addComponent(new ScoreTextControllerComponent());
+
 
     }
 }
