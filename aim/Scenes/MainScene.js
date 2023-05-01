@@ -15,7 +15,7 @@ class MainScene extends Scene {
         
         let addTargetGameObject = new GameObject(); 
         addTargetGameObject.name = "addTargetGameObject";
-        let addTargetComponent = new AddTargetComponent(4); 
+        let addTargetComponent = new AddTargetComponent(15); 
         addTargetComponent.name = "addTargetComponent";
         addTargetGameObject.addComponent(addTargetComponent);
         GameObject.instantiate(addTargetGameObject)

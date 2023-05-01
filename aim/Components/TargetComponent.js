@@ -8,6 +8,10 @@ class TargetComponent extends Component {
         this.completedTime = 0; 
     }
     update(){
+        
+        if(this.startTime == undefined){
+            this.startTime = Time.secondsCount;
+        }
         this.transform.x = this.parent.initX;
         this.transform.y = this.parent.initY;
         let targetTimers = GameObject.getObjectByName("aimScoreGameObject").getComponent("aimScoreComponent").targetTimers;
@@ -16,6 +20,7 @@ class TargetComponent extends Component {
 
         if(mouseX > this.transform.x - this.parent.width/2 && mouseX < this.transform.x + this.parent.width/2 && Input.mouseDown && !this.parent.markedForDestroy){           
             this.updateListeners("TargetClicked")
+
             targetTimers.push(Time.secondsCount -  this.startTime);
             this.parent.destroy();
         }
