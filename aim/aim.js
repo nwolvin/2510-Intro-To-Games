@@ -1,4 +1,4 @@
-import "/2510-Intro-To-Games/engine/engine.js"
+import "/engine/engine.js"
 import "../engine/Components/DrawBackground.js"
 
 import "../engine/Components/TextBox/TextBoxTextComponent.js"

@@ -1,4 +1,4 @@
-import "/2510-Intro-To-Games/engine/engine.js"
+import "/engine/engine.js"
 import "./Components/Cloud/AddCloudController.js"
 import "./Components/Enemy/AddTargetController.js"
 import "./Components/Cloud/CloudComponent.js"
