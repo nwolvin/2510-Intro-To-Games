@@ -18,6 +18,7 @@ class AddCloudController extends Component {
         if( this.addCloudCounter == 0){
             let cloud = new CloudGameObject(); 
             cloud.name = "cloud"
+            cloud.layer = 1
             GameObject.instantiate(cloud);
             this.addCloudCounter = (Math.floor(Math.random() * (5/3*Time.fpsTarget))); ;
 

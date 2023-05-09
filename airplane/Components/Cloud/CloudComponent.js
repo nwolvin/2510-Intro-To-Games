@@ -1,7 +1,7 @@
 class CloudComponent extends Component {
     start() {
         this.transform.x = Camera.main.transform.x - EngineGlobals.logicalWidth/2 + EngineGlobals.logicalWidth*1/6+(Math.floor(Math.random() * (EngineGlobals.logicalWidth*2/3)));
-        this.transform.y = Camera.main.transform.y - EngineGlobals.logicalHeight
+        this.transform.y = Camera.main.transform.y - EngineGlobals.logicalHeight*5/8/3*2
         this.circleNum = 8
         this.colorNum = (Math.floor(Math.random() * 2))
         this.circles = []
@@ -13,7 +13,7 @@ class CloudComponent extends Component {
         }
     }
     update() {
-        if((Math.abs(this.transform.y - Camera.main.transform.y)>(EngineGlobals.logicalHeight*5/3)) && this.hitflag){
+        if(Math.sqrt(((this.transform.y - Camera.main.transform.y)**2 + (this.transform.x - Camera.main.transform.x)**2)) > EngineGlobals.logicalHeight*6 && this.hitflag){
             this.hitflag = false
             this.parent.destroy()
         } else {
